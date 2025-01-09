@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="app.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>The Marathon Hub</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        /* Reset styles for margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul.shortcuts {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /center the items horizontally/
+        /* Style for the navigation bar */
+        ul {
+            margin: 0;
+            padding: 0;
+            justify-content: center;
+            /* Center the items horizontally */
+        }
+
+        li a {
+            font-size: xx-large;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: transparent;
+        }
+
+        header {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            min-height: 15vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        body {
+            background: linear-gradient(120deg, rgb(161, 2, 2), rgb(0, 15, 15));
+            min-height: 300vh;
+            font-family: "poppins";
+            font-size: 16px;
+            color: white;
+
+        }
+
+        .Home {
+            margin: 200px 123px 500px 10px;
+            width: 50%;
+        }
+
+
+
+        .paragraph {
+            margin: 20px;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            /* Adjust as needed */
+            max-width: 800px;
+            /* Optional: Constrain the image size */
+            margin: auto;
+            /* Center the container */
+        }
+
+        .marathon-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            /* Optional: Add a background for better readability */
+            padding: 20px;
+            border-radius: 10px;
+            /* Optional: Rounded corners */
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Your Marathon Journey Starts Here</h1>
+    </header>
+
+    <ul class="shortcuts">
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+    <div class="content">
+        <div class="image-container">
+            <img src="runners.png" alt="Marathon Runners" class="marathon-img">
+            <div class="text-overlay">
+                <h1>Welcome to Our Marathon Page!</h1>
+                <p>Join us in the most exciting and challenging marathon events around the world. Test your limits and
+                    experience the thrill of crossing the finish line.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
