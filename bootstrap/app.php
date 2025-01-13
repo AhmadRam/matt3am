@@ -34,6 +34,7 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Illuminate\Contracts\Auth\Middleware\AuthenticatesRequests::class,
             \Illuminate\Auth\Middleware\Authorize::class,
+            \Illuminate\Http\Middleware\HandleCors::class,
         ]);
 
         $middleware->group('users', [
