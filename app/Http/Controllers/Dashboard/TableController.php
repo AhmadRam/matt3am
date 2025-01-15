@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Resources\TableResource;
 use App\Repositories\TableRepository;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,7 @@ class TableController extends BaseController
 
         $tables = $this->tableRepository->paginate($limit);
 
-        return $this->sendResponse($tables, 'Tables retrieved successfully.');
+        return $this->sendResponse((TableResource::class)::collection($tables), 'Tables retrieved successfully.');
     }
 
    /**
@@ -120,7 +121,7 @@ class TableController extends BaseController
             return $this->sendError('Table not found.');
         }
 
-        return $this->sendResponse($table, 'Table retrieved successfully.');
+        return $this->sendResponse(new TableResource($table), 'Table retrieved successfully.');
     }
 
   /**
@@ -174,7 +175,7 @@ class TableController extends BaseController
 
         $table = $this->tableRepository->create($data);
 
-        return $this->sendResponse($table, 'Table created successfully.');
+        return $this->sendResponse(new TableResource($table), 'Table created successfully.');
     }
 
 /**
@@ -235,7 +236,7 @@ class TableController extends BaseController
 
         $table = $this->tableRepository->update($data, $id);
 
-        return $this->sendResponse($table, 'Table updated successfully.');
+        return $this->sendResponse(new TableResource($table), 'Table updated successfully.');
     }
 
 /**
@@ -281,6 +282,6 @@ class TableController extends BaseController
     {
         $table = $this->tableRepository->delete($id);
 
-        return $this->sendResponse($table, 'Table deleted successfully.');
+        return $this->sendResponse(new TableResource($table), 'Table deleted successfully.');
     }
 }

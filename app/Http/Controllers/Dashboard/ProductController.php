@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Resources\ProductResource;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 
@@ -70,7 +71,7 @@ class ProductController extends BaseController
 
         $products = $this->productRepository->paginate($limit);
 
-        return $this->sendResponse($products, 'Products retrieved successfully.');
+        return $this->sendResponse((ProductResource::class)::collection($products), 'Products retrieved successfully.');
     }
 
     /**
@@ -120,7 +121,7 @@ class ProductController extends BaseController
             return $this->sendError('Product not found.');
         }
 
-        return $this->sendResponse($product, 'Product retrieved successfully.');
+        return $this->sendResponse(new ProductResource($product), 'Product retrieved successfully.');
     }
 
     /**
@@ -176,7 +177,7 @@ class ProductController extends BaseController
 
         $product = $this->productRepository->create($data);
 
-        return $this->sendResponse($product, 'Product created successfully.', 201);
+        return $this->sendResponse(new ProductResource($product), 'Product created successfully.', 201);
     }
 
     /**
@@ -239,7 +240,7 @@ class ProductController extends BaseController
 
         $product = $this->productRepository->update($data, $id);
 
-        return $this->sendResponse($product, 'Product updated successfully.');
+        return $this->sendResponse(new ProductResource($product), 'Product updated successfully.');
     }
 
     /**

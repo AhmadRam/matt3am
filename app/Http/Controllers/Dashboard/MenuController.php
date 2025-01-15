@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Resources\MenuResource;
 use App\Repositories\MenuRepository;
 use Illuminate\Http\Request;
 
@@ -71,10 +72,10 @@ class MenuController extends BaseController
 
         $menus = $this->menuRepository->paginate($limit);
 
-        return $this->sendResponse($menus, 'Menus retrieved successfully.');
+        return $this->sendResponse((MenuResource::class)::collection($menus), 'Menus retrieved successfully.');
     }
 
-   /**
+    /**
      * Display the specified resource.
      *
      * @OA\Get(
@@ -121,10 +122,10 @@ class MenuController extends BaseController
             return $this->sendError('Menu not found.');
         }
 
-        return $this->sendResponse($menu, 'Menu retrieved successfully.');
+        return $this->sendResponse(new MenuResource($menu), 'Menu retrieved successfully.');
     }
 
- /**
+    /**
      * Store a newly created resource in storage.
      *
      * @OA\Post(
@@ -178,10 +179,10 @@ class MenuController extends BaseController
 
         $menu = $this->menuRepository->create($data);
 
-        return $this->sendResponse($menu, 'Menu created successfully.', 201);
+        return $this->sendResponse(new MenuResource($menu), 'Menu created successfully.', 201);
     }
 
-/**
+    /**
      * Update the specified resource in storage.
      *
      * @OA\Put(
@@ -242,10 +243,10 @@ class MenuController extends BaseController
 
         $menu = $this->menuRepository->update($data, $id);
 
-        return $this->sendResponse($menu, 'Menu updated successfully.');
+        return $this->sendResponse(new MenuResource($menu), 'Menu updated successfully.');
     }
 
-/**
+    /**
      * Remove the specified resource from storage.
      *
      * @OA\Delete(
