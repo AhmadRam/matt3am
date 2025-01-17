@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Eloquent\Repository;
+use App\Models\ProductImage;
 
 class ProductImageRepository extends Repository
 {
@@ -11,6 +12,6 @@ class ProductImageRepository extends Repository
      */
     public function model(): string
     {
-        return 'App\Contracts\ProductImage';
+        return ProductImage::class;
     }
 }

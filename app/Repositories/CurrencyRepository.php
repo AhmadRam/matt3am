@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Eloquent\Repository;
+use App\Models\Currency;
 
 class CurrencyRepository extends Repository
 {
@@ -11,6 +12,6 @@ class CurrencyRepository extends Repository
      */
     public function model(): string
     {
-        return 'App\Contracts\Currency';
+        return Currency::class;
     }
 }

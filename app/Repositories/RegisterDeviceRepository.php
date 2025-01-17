@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Eloquent\Repository;
+use App\Models\RegisterDevice;
 
 class RegisterDeviceRepository extends Repository
 {
@@ -13,6 +14,6 @@ class RegisterDeviceRepository extends Repository
      */
     public function model()
     {
-        return 'App\Contracts\RegisterDevice';
+        return RegisterDevice::class;
     }
 }

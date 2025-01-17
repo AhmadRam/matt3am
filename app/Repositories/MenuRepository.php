@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Eloquent\Repository;
+use App\Models\Menu;
 
 class MenuRepository extends Repository
 {
@@ -11,6 +12,6 @@ class MenuRepository extends Repository
      */
     public function model(): string
     {
-        return 'App\Contracts\Menu';
+        return Menu::class;
     }
 }

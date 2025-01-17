@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Eloquent\Repository;
+use App\Models\Table;
 
 class TableRepository extends Repository
 {
@@ -11,6 +12,6 @@ class TableRepository extends Repository
      */
     public function model(): string
     {
-        return 'App\Contracts\Table';
+        return Table::class;
     }
 }

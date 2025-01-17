@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Eloquent\Repository;
+use App\Models\User;
 
 class UserRepository extends Repository
 {
@@ -11,6 +12,6 @@ class UserRepository extends Repository
      */
     public function model(): string
     {
-        return 'App\Contracts\User';
+        return User::class;
     }
 }

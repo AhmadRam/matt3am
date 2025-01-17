@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Eloquent\Repository;
+use App\Models\Section;
 
 class SectionRepository extends Repository
 {
@@ -11,6 +12,6 @@ class SectionRepository extends Repository
      */
     public function model(): string
     {
-        return 'App\Contracts\Section';
+        return Section::class;
     }
 }
