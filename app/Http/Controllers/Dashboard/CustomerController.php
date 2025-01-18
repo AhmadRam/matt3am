@@ -167,16 +167,7 @@ class CustomerController extends BaseController
      */
     public function create()
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'country' => 'required',
-            'postal_code' => 'required',
-        ]);
+        $data = request()->all();
 
         $customer = $this->customerRepository->create($data);
 
@@ -233,16 +224,7 @@ class CustomerController extends BaseController
      */
     public function update($id)
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'country' => 'required',
-            'postal_code' => 'required',
-        ]);
+        $data = request()->all();
 
         $customer = $this->customerRepository->update($data, $id);
 
