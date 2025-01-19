@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *     required={"name", "address", "phone", "email"},
  *     @OA\Property(property="id", type="integer", example=1),
  *     @OA\Property(property="name", type="string", example="Restaurant Name"),
- *     @OA\Property(property="description", type="string", example="Full description of the Restaurant."),
  *     @OA\Property(property="description", type="string", example="A brief description of the restaurant."),
  *     @OA\Property(property="address", type="string", example="123 Main St, City, Country"),
  *     @OA\Property(property="phone", type="string", example="+123456789"),
