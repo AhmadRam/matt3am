@@ -167,11 +167,7 @@ class TableController extends BaseController
      */
     public function create()
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'status' => 'required|string',
-            'restaurant_id' => 'required|integer',
-        ]);
+        $data = request()->all();
 
         $table = $this->tableRepository->create($data);
 
@@ -228,11 +224,7 @@ class TableController extends BaseController
      */
     public function update($id)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'status' => 'required|string',
-            'restaurant_id' => 'required|integer',
-        ]);
+        $data = request()->all();
 
         $table = $this->tableRepository->update($data, $id);
 

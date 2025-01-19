@@ -167,11 +167,7 @@ class CurrencyExchangeRateController extends BaseController
      */
     public function create()
     {
-        $data = request()->validate([
-            'currency_id' => 'required',
-            'exchange_rate' => 'required',
-            'date' => 'required',
-        ]);
+        $data = request()->all();
 
         $currencyExchangeRate = $this->currencyExchangeRateRepository->create($data);
 
@@ -228,11 +224,7 @@ class CurrencyExchangeRateController extends BaseController
      */
     public function update($id)
     {
-        $data = request()->validate([
-            'currency_id' => 'required',
-            'exchange_rate' => 'required',
-            'date' => 'required',
-        ]);
+        $data = request()->all();
 
         $currencyExchangeRate = $this->currencyExchangeRateRepository->update($data, $id);
 

@@ -167,13 +167,7 @@ class ProductController extends BaseController
      */
     public function create()
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'category_id' => 'required',
-            'image' => 'required',
-        ]);
+        $data = request()->all();
 
         $product = $this->productRepository->create($data);
 
@@ -230,13 +224,7 @@ class ProductController extends BaseController
      */
     public function update($id)
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'category_id' => 'required',
-            'image' => 'required',
-        ]);
+        $data = request()->all();
 
         $product = $this->productRepository->update($data, $id);
 

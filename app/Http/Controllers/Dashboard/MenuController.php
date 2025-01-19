@@ -168,14 +168,7 @@ class MenuController extends BaseController
      */
     public function create()
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'category_id' => 'required',
-            'currency_id' => 'required',
-            'image' => 'required',
-        ]);
+        $data = request()->all();
 
         $menu = $this->menuRepository->create($data);
 
@@ -232,14 +225,7 @@ class MenuController extends BaseController
      */
     public function update($id)
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'category_id' => 'required',
-            'currency_id' => 'required',
-            'image' => 'required',
-        ]);
+        $data = request()->all();
 
         $menu = $this->menuRepository->update($data, $id);
 

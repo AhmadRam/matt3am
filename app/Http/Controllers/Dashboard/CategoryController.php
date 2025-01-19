@@ -178,10 +178,7 @@ class CategoryController extends BaseController
      */
     public function create(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-        ]);
+        $data = $request->all();
 
         $category = $this->categoryRepository->create($data);
 
@@ -258,10 +255,7 @@ class CategoryController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-        ]);
+        $data = $request->all();
 
         $category = $this->categoryRepository->update($data, $id);
 

@@ -167,11 +167,7 @@ class SectionController extends BaseController
      */
     public function create()
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'status' => 'required|boolean',
-        ]);
+        $data = request()->all();
 
         $section = $this->sectionRepository->create($data);
 
@@ -228,11 +224,7 @@ class SectionController extends BaseController
      */
     public function update($id)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'status' => 'required|boolean',
-        ]);
+        $data = request()->all();
 
         $section = $this->sectionRepository->update($data, $id);
 

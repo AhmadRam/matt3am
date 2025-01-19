@@ -182,13 +182,7 @@ class CurrencyController extends BaseController
      */
     public function create()
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'code' => 'required|string',
-            'symbol' => 'required|string',
-            'rate' => 'required|numeric',
-            'status' => 'required|boolean',
-        ]);
+        $data = request()->all();
 
         $currency = $this->currencyRepository->create($data);
 
@@ -255,13 +249,7 @@ class CurrencyController extends BaseController
      */
     public function update($id)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'code' => 'required|string',
-            'symbol' => 'required|string',
-            'rate' => 'required|numeric',
-            'status' => 'required|boolean',
-        ]);
+        $data = request()->all();
 
         $currency = $this->currencyRepository->update($data, $id);
 

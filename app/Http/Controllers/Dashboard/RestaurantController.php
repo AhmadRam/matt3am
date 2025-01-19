@@ -166,15 +166,7 @@ class RestaurantController extends BaseController
      */
     public function create()
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'address' => 'required|string',
-            'phone' => 'required|string',
-            'email' => 'required|email',
-            'image' => 'required|image',
-            'status' => 'required|boolean',
-        ]);
+        $data = request()->all();
 
         $restaurant = $this->restaurantRepository->create($data);
 
@@ -231,15 +223,7 @@ class RestaurantController extends BaseController
      */
     public function update($id)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'address' => 'required|string',
-            'phone' => 'required|string',
-            'email' => 'required|email',
-            'image' => 'required|image',
-            'status' => 'required|boolean',
-        ]);
+        $data = request()->all();
 
         $restaurant = $this->restaurantRepository->update($data, $id);
 

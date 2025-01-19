@@ -167,11 +167,7 @@ class CustomerGroupController extends BaseController
      */
     public function create()
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'status' => 'required|boolean',
-        ]);
+        $data = request()->all();
 
         $customerGroup = $this->customerGroupRepository->create($data);
 
@@ -228,11 +224,7 @@ class CustomerGroupController extends BaseController
      */
     public function update($id)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'status' => 'required|boolean',
-        ]);
+        $data = request()->all();
 
         $customerGroup = $this->customerGroupRepository->update($data, $id);
 

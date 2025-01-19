@@ -167,11 +167,7 @@ class UserController extends BaseController
      */
     public function create()
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'status' => 'required|string',
-            'restaurant_id' => 'required|integer',
-        ]);
+        $data = request()->all();
 
         $user = $this->userRepository->create($data);
 
@@ -228,11 +224,7 @@ class UserController extends BaseController
      */
     public function update($id)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'status' => 'required|string',
-            'restaurant_id' => 'required|integer',
-        ]);
+        $data = request()->all();
 
         $user = $this->userRepository->update($data, $id);
 
