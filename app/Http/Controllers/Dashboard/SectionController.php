@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\SectionRequest;
 use App\Http\Resources\SectionResource;
 use App\Repositories\SectionRepository;
 use Illuminate\Http\Request;
@@ -165,9 +166,9 @@ class SectionController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(SectionRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $section = $this->sectionRepository->create($data);
 
@@ -222,9 +223,9 @@ class SectionController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(SectionRequest $request, $id)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $section = $this->sectionRepository->update($data, $id);
 

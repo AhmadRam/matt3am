@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\CustomerGroupRequest;
 use App\Http\Resources\CustomerGroupResource;
 use App\Repositories\CustomerGroupRepository;
 use Illuminate\Http\Request;
@@ -165,9 +166,9 @@ class CustomerGroupController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(CustomerGroupRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $customerGroup = $this->customerGroupRepository->create($data);
 
@@ -222,9 +223,9 @@ class CustomerGroupController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(CustomerGroupRequest $request, $id)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $customerGroup = $this->customerGroupRepository->update($data, $id);
 

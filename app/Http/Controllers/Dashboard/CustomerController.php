@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\CustomerRequest;
 use App\Http\Resources\CustomerResource;
 use App\Repositories\CustomerRepository;
 use Illuminate\Http\Request;
@@ -165,9 +166,9 @@ class CustomerController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(CustomerRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $customer = $this->customerRepository->create($data);
 
@@ -222,9 +223,9 @@ class CustomerController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(CustomerRequest $request, $id)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $customer = $this->customerRepository->update($data, $id);
 

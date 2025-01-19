@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\ProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
@@ -165,9 +166,9 @@ class ProductController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(ProductRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $product = $this->productRepository->create($data);
 
@@ -222,9 +223,9 @@ class ProductController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(ProductRequest $request, $id)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $product = $this->productRepository->update($data, $id);
 

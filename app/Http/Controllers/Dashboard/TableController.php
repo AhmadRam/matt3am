@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\TableRequest;
 use App\Http\Resources\TableResource;
 use App\Repositories\TableRepository;
 use Illuminate\Http\Request;
@@ -74,7 +75,7 @@ class TableController extends BaseController
         return $this->sendResponse((TableResource::class)::collection($tables), 'Tables retrieved successfully.');
     }
 
-   /**
+    /**
      * Display the specified resource.
      *
      * @OA\Get(
@@ -124,7 +125,7 @@ class TableController extends BaseController
         return $this->sendResponse(new TableResource($table), 'Table retrieved successfully.');
     }
 
-  /**
+    /**
      * Store a newly created resource in storage.
      *
      * @OA\Post(
@@ -165,16 +166,16 @@ class TableController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(TableRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $table = $this->tableRepository->create($data);
 
         return $this->sendResponse(new TableResource($table), 'Table created successfully.');
     }
 
-/**
+    /**
      * Update the specified resource in storage.
      *
      * @OA\Put(
@@ -222,16 +223,16 @@ class TableController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(TableRequest $request, $id)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $table = $this->tableRepository->update($data, $id);
 
         return $this->sendResponse(new TableResource($table), 'Table updated successfully.');
     }
 
-/**
+    /**
      * Remove the specified resource from storage.
      *
      * @OA\Delete(

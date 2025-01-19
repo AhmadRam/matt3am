@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\MenuRequest;
 use App\Http\Resources\MenuResource;
 use App\Repositories\MenuRepository;
 use Illuminate\Http\Request;
@@ -166,9 +167,9 @@ class MenuController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(MenuRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $menu = $this->menuRepository->create($data);
 
@@ -223,9 +224,9 @@ class MenuController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(MenuRequest $request, $id)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $menu = $this->menuRepository->update($data, $id);
 

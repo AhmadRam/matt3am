@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\CategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
@@ -176,7 +177,7 @@ class CategoryController extends BaseController
      *     )
      * )
      */
-    public function create(Request $request)
+    public function create(CategoryRequest $request)
     {
         $data = $request->all();
 
@@ -253,7 +254,7 @@ class CategoryController extends BaseController
      *     )
      * )
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         $data = $request->all();
 

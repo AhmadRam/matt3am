@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\RestaurantRequest;
 use App\Http\Resources\RestaurantResource;
 use App\Repositories\RestaurantRepository;
 use Illuminate\Http\Request;
@@ -164,9 +165,9 @@ class RestaurantController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(RestaurantRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $restaurant = $this->restaurantRepository->create($data);
 
@@ -221,9 +222,9 @@ class RestaurantController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(RestaurantRequest $request, $id)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $restaurant = $this->restaurantRepository->update($data, $id);
 

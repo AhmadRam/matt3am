@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\UserRequest;
 use App\Http\Resources\UserResource;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -74,7 +75,7 @@ class UserController extends BaseController
         return $this->sendResponse((UserResource::class)::collection($users), 'Users retrieved successfully.');
     }
 
-   /**
+    /**
      * Display the specified resource.
      *
      * @OA\Get(
@@ -124,7 +125,7 @@ class UserController extends BaseController
         return $this->sendResponse(new UserResource($user), 'User retrieved successfully.');
     }
 
-  /**
+    /**
      * Store a newly created resource in storage.
      *
      * @OA\Post(
@@ -165,16 +166,16 @@ class UserController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(UserRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $user = $this->userRepository->create($data);
 
         return $this->sendResponse(new UserResource($user), 'User created successfully.');
     }
 
-/**
+    /**
      * Update the specified resource in storage.
      *
      * @OA\Put(
@@ -222,16 +223,16 @@ class UserController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(UserRequest $request, $id)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $user = $this->userRepository->update($data, $id);
 
         return $this->sendResponse(new UserResource($user), 'User updated successfully.');
     }
 
-/**
+    /**
      * Remove the specified resource from storage.
      *
      * @OA\Delete(

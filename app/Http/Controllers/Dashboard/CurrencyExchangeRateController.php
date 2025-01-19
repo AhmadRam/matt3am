@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\CurrencyExchangeRateRequest;
 use App\Repositories\CurrencyExchangeRateRepository;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
@@ -10,7 +11,7 @@ use OpenApi\Annotations as OA;
 class CurrencyExchangeRateController extends BaseController
 {
 
-      /**
+    /**
      * Create a new repository instance.
      *
      * @return void
@@ -165,9 +166,9 @@ class CurrencyExchangeRateController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(CurrencyExchangeRateRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $currencyExchangeRate = $this->currencyExchangeRateRepository->create($data);
 
@@ -222,9 +223,9 @@ class CurrencyExchangeRateController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(CurrencyExchangeRateRequest $request, $id)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $currencyExchangeRate = $this->currencyExchangeRateRepository->update($data, $id);
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\CurrencyRequest;
 use App\Repositories\CurrencyRepository;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
@@ -180,9 +181,9 @@ class CurrencyController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(CurrencyRequest $request)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $currency = $this->currencyRepository->create($data);
 
@@ -247,9 +248,9 @@ class CurrencyController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(CurrencyRequest $request, $id)
     {
-        $data = request()->all();
+        $data = $request->all();
 
         $currency = $this->currencyRepository->update($data, $id);
 
