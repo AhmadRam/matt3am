@@ -13,8 +13,10 @@ class CustomerGroupRequest extends FormRequest
 
     public function rules()
     {
+        $customerId = $this->route('id');
+
         return [
-            'code' => 'required|string|max:255|unique:customer_groups,code',
+            'code' => 'required|string|max:255|unique:customer_groups,code,' . $customerId,
             'name' => 'required|string|max:255',
             'is_user_defined' => 'sometimes|boolean',
         ];

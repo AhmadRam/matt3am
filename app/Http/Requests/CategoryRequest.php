@@ -13,12 +13,14 @@ class CategoryRequest extends FormRequest
 
     public function rules()
     {
+        $categoryId = $this->route('id');
+
         return [
             'name'             => 'required|string|max:255',
             'position'         => 'integer|min:0',
             'status'           => 'boolean',
             'image'            => 'nullable|image|max:2048',
-            'slug'             => 'required|string|unique:categories,slug|max:255',
+            'slug'             => 'required|string|unique:categories,slug,' . $categoryId . '|max:255',
             'url_key'          => 'nullable|string|max:255',
             'description'      => 'nullable|string',
             'meta_title'       => 'nullable|string|max:255',
