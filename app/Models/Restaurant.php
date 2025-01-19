@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @OA\Schema(
  *     schema="Restaurant",
  *     required={"name", "address", "phone", "email"},
+ *     @OA\Property(property="description", type="string", example="Full description of the Restaurant."),
  *     @OA\Property(property="id", type="integer", example=1),
  *     @OA\Property(property="name", type="string", example="Restaurant Name"),
  *     @OA\Property(property="description", type="string", example="A brief description of the restaurant."),

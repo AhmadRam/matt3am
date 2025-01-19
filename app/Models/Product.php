@@ -27,6 +27,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *     @OA\Property(property="price", type="number", format="float", example=99.99),
  *     @OA\Property(property="special_price", type="number", format="float", example=89.99),
  *     @OA\Property(property="quantity", type="integer", example=100),
+ *     @OA\Property(
+ *         property="images",
+ *         type="array",
+ *         @OA\Items(
+ *             type="string",
+ *             format="binary"
+ *         )
+ *     ),
  *     @OA\Property(property="created_at", type="string", format="date-time", example="2025-01-01T00:00:00Z"),
  *     @OA\Property(property="updated_at", type="string", format="date-time", example="2025-01-01T00:00:00Z")
  * )
@@ -52,22 +60,22 @@ class Product extends Model implements ContractsProduct
         'quantity'
     ];
 
-    public function categories() : BelongsToMany
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'product_categories');
     }
 
-    public function images() : HasMany
+    public function images(): HasMany
     {
         return $this->hasMany(ProductImage::class);
     }
 
-    public function upSells() : HasMany
+    public function upSells(): HasMany
     {
         return $this->hasMany(ProductUpSell::class, 'parent_id');
     }
 
-    public function crossSells() : HasMany
+    public function crossSells(): HasMany
     {
         return $this->hasMany(ProductCrossSell::class, 'parent_id');
     }
