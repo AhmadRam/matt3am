@@ -28,12 +28,12 @@ class ProductRepository extends Repository
      */
     public function create($data)
     {
-        $images['images'] = $data['images'] ?? [];
-        unset($data['images']);
+        $images['image'] = $data['image'] ?? [];
+        unset($data['image']);
 
         $product = parent::create($data);
 
-        app(ProductImageRepository::class)->upload($product, $images, 'image');
+        app(ProductImageRepository::class)->upload($images, $product, 'image');
 
         return $product;
     }
@@ -52,7 +52,7 @@ class ProductRepository extends Repository
         unset($data['image']);
         $product = parent::update($data, $id);
 
-        app(ProductImageRepository::class)->upload($product, $images, 'image');
+        app(ProductImageRepository::class)->upload($images, $product, 'image');
 
         return $product;
     }

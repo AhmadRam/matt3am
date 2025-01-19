@@ -13,8 +13,15 @@ class ProductRequest extends FormRequest
 
     public function rules()
     {
+        $productId = $this->route('id');
+
         return [
-            'sku'               => 'nullable|string|unique:products,sku|max:255',
+            'sku'               => [
+                'nullable',
+                'string',
+                'max:255',
+                'unique:products,sku,' . $productId, // Ignore the current product's SKU on update
+            ],
             'name'              => 'required|string|max:255',
             'url_key'           => 'nullable|string|max:255',
             'description'       => 'nullable|string',

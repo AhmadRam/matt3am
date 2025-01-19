@@ -54,21 +54,21 @@ class Product extends Model implements ContractsProduct
 
     public function categories() : BelongsToMany
     {
-        return $this->belongsToMany(CategoryProxy::modelClass(), 'product_categories');
+        return $this->belongsToMany(Category::class, 'product_categories');
     }
 
     public function images() : HasMany
     {
-        return $this->hasMany(ProductImageProxy::modelClass());
+        return $this->hasMany(ProductImage::class);
     }
 
     public function upSells() : HasMany
     {
-        return $this->hasMany(ProductUpSellProxy::modelClass(), 'parent_id');
+        return $this->hasMany(ProductUpSell::class, 'parent_id');
     }
 
     public function crossSells() : HasMany
     {
-        return $this->hasMany(ProductCrossSellProxy::modelClass(), 'parent_id');
+        return $this->hasMany(ProductCrossSell::class, 'parent_id');
     }
 }

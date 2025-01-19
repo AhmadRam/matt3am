@@ -30,6 +30,7 @@ class ProductResource extends JsonResource
             'price'                => $this->price,
             'special_price'        => $this->special_price,
             'quantity'             => $this->quantity,
+            'images'               => $this->images->pluck('path')->toArray(),
             'created_at'           => \Carbon\Carbon::parse($this->created_at)->format('Y/m/d H:i:s'),
             'updated_at'           => \Carbon\Carbon::parse($this->updated_at)->format('Y/m/d H:i:s'),
         ];

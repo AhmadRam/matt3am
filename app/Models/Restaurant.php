@@ -35,16 +35,16 @@ class Restaurant extends Model implements ContractsRestaurant
 
     public function sections(): HasMany
     {
-        return $this->hasMany(SectionProxy::modelClass());
+        return $this->hasMany(Section::class);
     }
 
     public function tables(): HasMany
     {
-        return $this->hasMany(TableProxy::modelClass());
+        return $this->hasMany(Table::class);
     }
 
     public function menus(): HasMany
     {
-        return $this->hasMany(MenuProxy::modelClass());
+        return $this->hasMany(Menu::class);
     }
 }

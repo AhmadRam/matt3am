@@ -34,7 +34,7 @@ class ProductImageRepository extends Repository
      * Upload.
      *
      * @param  array  $data
-     * @param  \Webkul\Product\Contracts\Product  $product
+     * @param  \App\Models\Product  $product
      * @param  string  $uploadFileType
      * @return void
      */
@@ -46,8 +46,8 @@ class ProductImageRepository extends Repository
          */
         $previousIds = $product->images()->pluck('id');
 
-        if (!empty($data[$uploadFileType]['files'])) {
-            foreach ($data[$uploadFileType]['files'] as $indexOrModelId => $file) {
+        if (!empty($data[$uploadFileType])) {
+            foreach ($data[$uploadFileType] as $indexOrModelId => $file) {
                 if ($file instanceof UploadedFile) {
 
                     $dir = $this->getProductDirectory($product) . '/' . time() . '_' . rand(1, 100) . '_' . $indexOrModelId . '.webp';
