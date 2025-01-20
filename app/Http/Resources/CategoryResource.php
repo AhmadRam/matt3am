@@ -28,8 +28,8 @@ class CategoryResource extends JsonResource
             'meta_keywords'     => $this->meta_keywords,
             'restaurant_id'     => $this->restaurant_id,
             'currency_id'       => $this->currency_id,
-            'created_at'        => \Carbon\Carbon::parse($this->created_at)->format('Y/m/d H:i:s'),
-            'updated_at'        => \Carbon\Carbon::parse($this->updated_at)->format('Y/m/d H:i:s'),
+            'created_at'        => \Carbon\Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
+            'updated_at'        => \Carbon\Carbon::parse($this->updated_at)->format('Y-m-d H:i:s'),
             'parent'            => $this->parent ? new self($this->parent) : null, // Nested set parent category (if exists)
             'children'          => CategoryResource::collection($this->children), // Nested set children categories
         ];

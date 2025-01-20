@@ -23,8 +23,8 @@ class ProductReviewResource extends JsonResource
             'status'          => $this->status,
             'customer_id'     => $this->customer_id,
             'product_id'      => $this->product_id,
-            'created_at'      => \Carbon\Carbon::parse($this->created_at)->format('Y/m/d H:i:s'),
-            'updated_at'      => \Carbon\Carbon::parse($this->updated_at)->format('Y/m/d H:i:s'),
+            'created_at'      => \Carbon\Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
+            'updated_at'      => \Carbon\Carbon::parse($this->updated_at)->format('Y-m-d H:i:s'),
         ];
     }
 }

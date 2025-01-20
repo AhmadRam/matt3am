@@ -72,7 +72,7 @@ class TableController extends BaseController
 
         $tables = $this->tableRepository->paginate($limit);
 
-        return $this->sendResponse((TableResource::class)::collection($tables), 'Tables retrieved successfully.');
+        return $this->sendResponse((TableResource::class)::collection($tables), 'Tables retrieved successfully.', true);
     }
 
     /**

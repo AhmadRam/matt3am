@@ -27,10 +27,10 @@ class RestaurantResource extends JsonResource
             'meta_title'           => $this->meta_title,
             'meta_keywords'        => $this->meta_keywords,
             'meta_description'     => $this->meta_description,
-            'subscription_start_date' => \Carbon\Carbon::parse($this->subscription_start_date)->format('Y/m/d'),
-            'subscription_end_date'   => \Carbon\Carbon::parse($this->subscription_end_date)->format('Y/m/d'),
-            'created_at'           => \Carbon\Carbon::parse($this->created_at)->format('Y/m/d H:i:s'),
-            'updated_at'           => \Carbon\Carbon::parse($this->updated_at)->format('Y/m/d H:i:s'),
+            'subscription_start_date' => \Carbon\Carbon::parse($this->subscription_start_date)->format('Y-m-d'),
+            'subscription_end_date'   => \Carbon\Carbon::parse($this->subscription_end_date)->format('Y-m-d'),
+            'created_at'           => \Carbon\Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
+            'updated_at'           => \Carbon\Carbon::parse($this->updated_at)->format('Y-m-d H:i:s'),
         ];
     }
 }

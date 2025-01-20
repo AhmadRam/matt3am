@@ -19,7 +19,6 @@ class ProductRepository extends Repository
         return Product::class;
     }
 
-
     /**
      * Create Product.
      *

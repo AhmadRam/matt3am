@@ -73,7 +73,7 @@ class MenuController extends BaseController
 
         $menus = $this->menuRepository->paginate($limit);
 
-        return $this->sendResponse((MenuResource::class)::collection($menus), 'Menus retrieved successfully.');
+        return $this->sendResponse((MenuResource::class)::collection($menus), 'Menus retrieved successfully.', true);
     }
 
     /**
@@ -173,7 +173,7 @@ class MenuController extends BaseController
 
         $menu = $this->menuRepository->create($data);
 
-        return $this->sendResponse(new MenuResource($menu), 'Menu created successfully.', 201);
+        return $this->sendResponse(new MenuResource($menu), 'Menu created successfully.');
     }
 
     /**

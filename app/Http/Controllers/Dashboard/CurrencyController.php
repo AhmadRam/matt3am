@@ -69,7 +69,7 @@ class CurrencyController extends BaseController
 
         $currencies = $this->currencyRepository->paginate($limit);
 
-        return $this->sendResponse($currencies, 'Currencies retrieved successfully.');
+        return $this->sendResponse($currencies, 'Currencies retrieved successfully.', true);
     }
 
     /**

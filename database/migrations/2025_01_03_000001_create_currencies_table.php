@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('code');
             $table->string('name');
             $table->string('symbol');
+            $table->boolean('status');
             // $table->foreignId('country_id')->nullable()->constrained('countries')->nullOnDelete();
             $table->timestamps();
         });

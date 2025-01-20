@@ -47,7 +47,7 @@ class CustomerRepository extends Repository
         $customer = $this->find($id);
         $images['image'] = $data['image'] ?? null;
         unset($data['image']);
-        // $customer = parent::update($data, $id);
+        $customer = parent::update($data, $id);
 
         Helper::uploadImages($images, $customer, 'image');
 

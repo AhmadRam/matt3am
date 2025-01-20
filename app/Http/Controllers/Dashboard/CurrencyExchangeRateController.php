@@ -72,7 +72,7 @@ class CurrencyExchangeRateController extends BaseController
 
         $currencyExchangeRates = $this->currencyExchangeRateRepository->paginate($limit);
 
-        return $this->sendResponse($currencyExchangeRates, 'Currency Exchange Rates retrieved successfully.');
+        return $this->sendResponse($currencyExchangeRates, 'Currency Exchange Rates retrieved successfully.', true);
     }
 
     /**

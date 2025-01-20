@@ -183,7 +183,7 @@ class CategoryController extends BaseController
 
         $category = $this->categoryRepository->create($data);
 
-        return $this->sendResponse(new CategoryResource($category), 'Category created successfully.', false, [], 201);
+        return $this->sendResponse(new CategoryResource($category), 'Category created successfully.');
     }
 
     /**

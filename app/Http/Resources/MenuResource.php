@@ -22,8 +22,8 @@ class MenuResource extends JsonResource
             'meta_title'           => $this->meta_title,
             'meta_keywords'        => $this->meta_keywords,
             'meta_description'     => $this->meta_description,
-            'created_at'           => \Carbon\Carbon::parse($this->created_at)->format('Y/m/d H:i:s'),
-            'updated_at'           => \Carbon\Carbon::parse($this->updated_at)->format('Y/m/d H:i:s'),
+            'created_at'           => \Carbon\Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
+            'updated_at'           => \Carbon\Carbon::parse($this->updated_at)->format('Y-m-d H:i:s'),
         ];
     }
 }

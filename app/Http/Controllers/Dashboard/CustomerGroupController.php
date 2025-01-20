@@ -72,7 +72,7 @@ class CustomerGroupController extends BaseController
 
         $customerGroups = $this->customerGroupRepository->paginate($limit);
 
-        return $this->sendResponse((CustomerGroupResource::class)::collection($customerGroups), 'Customer Groups retrieved successfully.');
+        return $this->sendResponse((CustomerGroupResource::class)::collection($customerGroups), 'Customer Groups retrieved successfully.', true);
     }
 
     /**

@@ -5417,11 +5417,6 @@
                         "type": "string",
                         "example": "$"
                     },
-                    "rate": {
-                        "type": "number",
-                        "format": "float",
-                        "example": 1
-                    },
                     "status": {
                         "type": "boolean",
                         "example": true
@@ -5655,6 +5650,13 @@
                         "type": "integer",
                         "example": 100
                     },
+                    "images": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "binary"
+                        }
+                    },
                     "created_at": {
                         "type": "string",
                         "format": "date-time",
@@ -5671,9 +5673,10 @@
             "Restaurant": {
                 "required": [
                     "name",
-                    "address",
-                    "phone",
-                    "email"
+                    "subscription_start_date",
+                    "subscription_end_date",
+                    "user_id",
+                    "currency_id"
                 ],
                 "properties": {
                     "id": {
@@ -5686,19 +5689,67 @@
                     },
                     "description": {
                         "type": "string",
-                        "example": "A brief description of the restaurant."
+                        "example": "A brief description of the restaurant.",
+                        "nullable": true
                     },
                     "address": {
                         "type": "string",
-                        "example": "123 Main St, City, Country"
+                        "example": "123 Main St, City, Country",
+                        "nullable": true
+                    },
+                    "phone_code": {
+                        "type": "string",
+                        "example": "+1",
+                        "nullable": true
                     },
                     "phone": {
                         "type": "string",
-                        "example": "+123456789"
+                        "example": "123456789",
+                        "nullable": true
                     },
-                    "email": {
+                    "logo": {
                         "type": "string",
-                        "example": "restaurant@example.com"
+                        "example": "logo.png",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "subscription_start_date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-01-01"
+                    },
+                    "subscription_end_date": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2026-01-01"
+                    },
+                    "user_id": {
+                        "description": "The ID of the user associated with the restaurant.",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "currency_id": {
+                        "description": "The ID of the currency associated with the restaurant.",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "meta_title": {
+                        "type": "string",
+                        "example": "Restaurant Meta Title",
+                        "nullable": true
+                    },
+                    "meta_keywords": {
+                        "type": "string",
+                        "example": "restaurant, food, dining",
+                        "nullable": true
+                    },
+                    "meta_description": {
+                        "type": "string",
+                        "example": "Meta description for the restaurant.",
+                        "nullable": true
                     },
                     "created_at": {
                         "type": "string",

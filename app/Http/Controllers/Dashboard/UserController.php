@@ -72,7 +72,7 @@ class UserController extends BaseController
 
         $users = $this->userRepository->paginate($limit);
 
-        return $this->sendResponse((UserResource::class)::collection($users), 'Users retrieved successfully.');
+        return $this->sendResponse((UserResource::class)::collection($users), 'Users retrieved successfully.', true);
     }
 
     /**

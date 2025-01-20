@@ -17,7 +17,6 @@ use OpenApi\Annotations as OA;
  *     @OA\Property(property="code", type="string", example="USD"),
  *     @OA\Property(property="name", type="string", example="US Dollar"),
  *     @OA\Property(property="symbol", type="string", example="$"),
- *     @OA\Property(property="rate", type="number", format="float", example=1.00),
  *     @OA\Property(property="status", type="boolean", example=true)
  * )
  */

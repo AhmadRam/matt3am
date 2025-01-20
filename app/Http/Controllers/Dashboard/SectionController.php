@@ -72,7 +72,7 @@ class SectionController extends BaseController
 
         $sections = $this->sectionRepository->paginate($limit);
 
-        return $this->sendResponse((SectionResource::class)::collection($sections), 'Sections retrieved successfully.');
+        return $this->sendResponse((SectionResource::class)::collection($sections), 'Sections retrieved successfully.', true);
     }
 
     /**
@@ -172,7 +172,7 @@ class SectionController extends BaseController
 
         $section = $this->sectionRepository->create($data);
 
-        return $this->sendResponse(new SectionResource($section), 'Section created successfully.', 201);
+        return $this->sendResponse(new SectionResource($section), 'Section created successfully.');
     }
 
     /**

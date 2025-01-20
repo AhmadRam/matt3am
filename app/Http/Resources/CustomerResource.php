@@ -28,8 +28,8 @@ class CustomerResource extends JsonResource
             'notes'             => $this->notes,
             'api_token'         => $this->api_token,
             'customer_group'    => new CustomerGroupResource($this->whenLoaded('customerGroup')),
-            'created_at'        => \Carbon\Carbon::parse($this->created_at)->format('Y/m/d H:i:s'),
-            'updated_at'        => \Carbon\Carbon::parse($this->updated_at)->format('Y/m/d H:i:s'),
+            'created_at'        => \Carbon\Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
+            'updated_at'        => \Carbon\Carbon::parse($this->updated_at)->format('Y-m-d H:i:s'),
         ];
     }
 }

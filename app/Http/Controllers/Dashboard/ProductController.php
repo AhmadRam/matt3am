@@ -72,7 +72,7 @@ class ProductController extends BaseController
 
         $products = $this->productRepository->paginate($limit);
 
-        return $this->sendResponse((ProductResource::class)::collection($products), 'Products retrieved successfully.');
+        return $this->sendResponse((ProductResource::class)::collection($products), 'Products retrieved successfully.', true);
     }
 
     /**
@@ -172,7 +172,7 @@ class ProductController extends BaseController
 
         $product = $this->productRepository->create($data);
 
-        return $this->sendResponse(new ProductResource($product), 'Product created successfully.', 201);
+        return $this->sendResponse(new ProductResource($product), 'Product created successfully.');
     }
 
     /**

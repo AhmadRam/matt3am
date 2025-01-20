@@ -72,7 +72,7 @@ class RestaurantController extends BaseController
 
         $restaurants = $this->restaurantRepository->paginate($limit);
 
-        return $this->sendResponse((RestaurantResource::class)::collection($restaurants), 'Restaurants retrieved successfully.');
+        return $this->sendResponse((RestaurantResource::class)::collection($restaurants), 'Restaurants retrieved successfully.', true);
     }
 
     /**
@@ -171,7 +171,7 @@ class RestaurantController extends BaseController
 
         $restaurant = $this->restaurantRepository->create($data);
 
-        return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant created successfully.', 201);
+        return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant created successfully.');
     }
 
     /**
