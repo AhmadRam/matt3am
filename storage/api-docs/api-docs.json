@@ -351,21 +351,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "name",
-                                    "description"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "Appetizers"
-                                    },
-                                    "description": {
-                                        "type": "string",
-                                        "example": "Starter meals for your menu."
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Category"
                             }
                         }
                     }
@@ -474,21 +460,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "name",
-                                    "description"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "Appetizers"
-                                    },
-                                    "description": {
-                                        "type": "string",
-                                        "example": "Starter meals for your menu."
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Category"
                             }
                         }
                     }
@@ -908,37 +880,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "name",
-                                    "code",
-                                    "symbol",
-                                    "rate",
-                                    "status"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "US Dollar"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "example": "USD"
-                                    },
-                                    "symbol": {
-                                        "type": "string",
-                                        "example": "$"
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1
-                                    },
-                                    "status": {
-                                        "type": "boolean",
-                                        "example": true
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Currency"
                             }
                         }
                     }
@@ -1047,37 +989,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "name",
-                                    "code",
-                                    "symbol",
-                                    "rate",
-                                    "status"
-                                ],
-                                "properties": {
-                                    "name": {
-                                        "type": "string",
-                                        "example": "US Dollar"
-                                    },
-                                    "code": {
-                                        "type": "string",
-                                        "example": "USD"
-                                    },
-                                    "symbol": {
-                                        "type": "string",
-                                        "example": "$"
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1
-                                    },
-                                    "status": {
-                                        "type": "boolean",
-                                        "example": true
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Currency"
                             }
                         }
                     }
@@ -1450,27 +1362,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/CurrencyExchangeRate"
                             }
                         }
                     }
@@ -1556,27 +1448,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/CurrencyExchangeRate"
                             }
                         }
                     }
@@ -1902,27 +1774,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Customer"
                             }
                         }
                     }
@@ -2008,27 +1860,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Customer"
                             }
                         }
                     }
@@ -2354,27 +2186,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/CustomerGroup"
                             }
                         }
                     }
@@ -2460,27 +2272,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/CustomerGroup"
                             }
                         }
                     }
@@ -2806,27 +2598,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Menu"
                             }
                         }
                     }
@@ -2912,27 +2684,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Menu"
                             }
                         }
                     }
@@ -3258,27 +3010,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Product"
                             }
                         }
                     }
@@ -3364,27 +3096,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Product"
                             }
                         }
                     }
@@ -3710,27 +3422,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Restaurant"
                             }
                         }
                     }
@@ -3816,27 +3508,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Restaurant"
                             }
                         }
                     }
@@ -4162,27 +3834,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Section"
                             }
                         }
                     }
@@ -4268,27 +3920,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Section"
                             }
                         }
                     }
@@ -4614,27 +4246,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Table"
                             }
                         }
                     }
@@ -4720,27 +4332,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/Table"
                             }
                         }
                     }
@@ -5066,27 +4658,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/User"
                             }
                         }
                     }
@@ -5172,27 +4744,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "required": [
-                                    "base_currency",
-                                    "target_currency",
-                                    "rate"
-                                ],
-                                "properties": {
-                                    "base_currency": {
-                                        "type": "integer",
-                                        "example": 1
-                                    },
-                                    "target_currency": {
-                                        "type": "integer",
-                                        "example": 2
-                                    },
-                                    "rate": {
-                                        "type": "number",
-                                        "format": "float",
-                                        "example": 1.23
-                                    }
-                                },
-                                "type": "object"
+                                "$ref": "#/components/schemas/User"
                             }
                         }
                     }

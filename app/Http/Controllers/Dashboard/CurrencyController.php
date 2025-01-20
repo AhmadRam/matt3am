@@ -140,14 +140,7 @@ class CurrencyController extends BaseController
      *     security={{"bearerAuth": {}}},
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             required={"name", "code", "symbol", "rate", "status"},
-     *             @OA\Property(property="name", type="string", example="US Dollar"),
-     *             @OA\Property(property="code", type="string", example="USD"),
-     *             @OA\Property(property="symbol", type="string", example="$"),
-     *             @OA\Property(property="rate", type="number", format="float", example=1.00),
-     *             @OA\Property(property="status", type="boolean", example=true)
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Currency")
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -207,14 +200,7 @@ class CurrencyController extends BaseController
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             required={"name", "code", "symbol", "rate", "status"},
-     *             @OA\Property(property="name", type="string", example="US Dollar"),
-     *             @OA\Property(property="code", type="string", example="USD"),
-     *             @OA\Property(property="symbol", type="string", example="$"),
-     *             @OA\Property(property="rate", type="number", format="float", example=1.00),
-     *             @OA\Property(property="status", type="boolean", example=true)
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Currency")
      *     ),
      *     @OA\Response(
      *         response=200,

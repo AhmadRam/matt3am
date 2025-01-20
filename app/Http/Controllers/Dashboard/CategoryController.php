@@ -139,11 +139,7 @@ class CategoryController extends BaseController
      *     security={{"bearerAuth": {}}},
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             required={"name", "description"},
-     *             @OA\Property(property="name", type="string", example="Appetizers"),
-     *             @OA\Property(property="description", type="string", example="Starter meals for your menu.")
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Category")
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -203,11 +199,7 @@ class CategoryController extends BaseController
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             required={"name", "description"},
-     *             @OA\Property(property="name", type="string", example="Appetizers"),
-     *             @OA\Property(property="description", type="string", example="Starter meals for your menu.")
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Category")
      *     ),
      *     @OA\Response(
      *         response=200,

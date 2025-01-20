@@ -137,12 +137,7 @@ class SectionController extends BaseController
      *     security={{"bearerAuth": {}}},
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             required={"base_currency", "target_currency", "rate"},
-     *             @OA\Property(property="base_currency", type="integer", example=1),
-     *             @OA\Property(property="target_currency", type="integer", example=2),
-     *             @OA\Property(property="rate", type="number", format="float", example=1.23)
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Section")
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -194,12 +189,7 @@ class SectionController extends BaseController
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             required={"base_currency", "target_currency", "rate"},
-     *             @OA\Property(property="base_currency", type="integer", example=1),
-     *             @OA\Property(property="target_currency", type="integer", example=2),
-     *             @OA\Property(property="rate", type="number", format="float", example=1.23)
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Section")
      *     ),
      *     @OA\Response(
      *         response=200,

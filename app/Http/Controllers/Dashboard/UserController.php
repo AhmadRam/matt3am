@@ -137,16 +137,7 @@ class UserController extends BaseController
      *     security={{"bearerAuth": {}}},
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             required={"username", "password", "full_name", "email"},
-     *             @OA\Property(property="username", type="string", example="john_doe"),
-     *             @OA\Property(property="password", type="string", example="securepassword123"),
-     *             @OA\Property(property="full_name", type="string", example="John Doe"),
-     *             @OA\Property(property="email", type="string", example="johndoe@example.com"),
-     *             @OA\Property(property="status", type="boolean", example=true),
-     *             @OA\Property(property="profile_image", type="string", example="profile_images/johndoe.jpg"),
-     *             @OA\Property(property="restaurant_id", type="integer", example=1)
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/User")
      *     ),
      *     @OA\Response(
      *         response=201,
@@ -198,16 +189,7 @@ class UserController extends BaseController
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(
-     *             required={"username", "password", "full_name", "email"},
-     *             @OA\Property(property="username", type="string", example="john_doe"),
-     *             @OA\Property(property="password", type="string", example="securepassword123"),
-     *             @OA\Property(property="full_name", type="string", example="John Doe"),
-     *             @OA\Property(property="email", type="string", example="johndoe@example.com"),
-     *             @OA\Property(property="status", type="boolean", example=true),
-     *             @OA\Property(property="profile_image", type="string", example="profile_images/johndoe.jpg"),
-     *             @OA\Property(property="restaurant_id", type="integer", example=1)
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/User")
      *     ),
      *     @OA\Response(
      *         response=200,
