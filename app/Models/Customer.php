@@ -21,6 +21,13 @@ use OpenApi\Annotations as OA;
  *     @OA\Property(property="email", type="string"),
  *     @OA\Property(property="phone", type="string"),
  *     @OA\Property(property="gender", type="string"),
+ *     @OA\Property(
+ *         property="image",
+ *         type="string",
+ *         format="binary",
+ *         example="image.jpg",
+ *         description="Profile image of the user"
+ *     ),
  *     @OA\Property(property="date_of_birth", type="string", format="date"),
  *     @OA\Property(property="customer_group_id", type="integer"),
  *     @OA\Property(property="created_at", type="string", format="date-time"),

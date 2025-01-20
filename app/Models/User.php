@@ -22,7 +22,13 @@ use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
  *     @OA\Property(property="full_name", type="string", example="John Doe"),
  *     @OA\Property(property="email", type="string", example="johndoe@example.com"),
  *     @OA\Property(property="status", type="boolean", example=true),
- *     @OA\Property(property="profile_image", type="string", example="https://example.com/profile.jpg"),
+ *     @OA\Property(
+ *         property="profile_image",
+ *         type="string",
+ *         format="binary",
+ *         example="profile_image.jpg",
+ *         description="Profile image of the user"
+ *     ),
  *     @OA\Property(property="restaurant_id", type="integer", example=1),
  *     @OA\Property(property="created_at", type="string", format="date-time", example="2025-01-01T00:00:00Z"),
  *     @OA\Property(property="updated_at", type="string", format="date-time", example="2025-01-01T00:00:00Z"),

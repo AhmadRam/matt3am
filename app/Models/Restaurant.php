@@ -17,7 +17,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  *     @OA\Property(property="address", type="string", nullable=true, example="123 Main St, City, Country"),
  *     @OA\Property(property="phone_code", type="string", nullable=true, example="+1"),
  *     @OA\Property(property="phone", type="string", nullable=true, example="123456789"),
- *     @OA\Property(property="logo", type="string", nullable=true, example="logo.png"),
+ *     @OA\Property(
+ *         property="logo",
+ *         type="string",
+ *         format="binary",
+ *         example="logo.jpg",
+ *         description="Profile image of the user"
+ *     ),
  *     @OA\Property(property="status", type="boolean", example=true),
  *     @OA\Property(property="subscription_start_date", type="string", format="date", example="2025-01-01"),
  *     @OA\Property(property="subscription_end_date", type="string", format="date", example="2026-01-01"),

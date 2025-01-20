@@ -16,7 +16,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  *     @OA\Property(property="description", type="string", example="Starter meals for your menu."),
  *     @OA\Property(property="position", type="integer", example=1),
  *     @OA\Property(property="status", type="boolean", example=true),
- *     @OA\Property(property="image", type="string", example="https://example.com/image.png"),
+ *     @OA\Property(
+ *         property="image",
+ *         type="string",
+ *         format="binary",
+ *         example="image.jpg",
+ *         description="Profile image of the user"
+ *     ),
  *     @OA\Property(property="slug", type="string", example="appetizers"),
  *     @OA\Property(property="url_key", type="string", example="appetizers-url"),
  *     @OA\Property(property="meta_title", type="string", example="Appetizers Meta Title"),
