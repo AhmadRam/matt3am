@@ -55,7 +55,7 @@ class Customer extends Authenticatable implements JWTSubject, ContractsCustomer
 
     public function customerGroup(): BelongsTo
     {
-        return $this->belongsTo(CustomerGroupProxy::modelClass());
+        return $this->belongsTo(CustomerGroup::class);
     }
 
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\CustomerGroupRequest;
+use App\Http\Resources\CustomerGroupResource;
 use App\Repositories\CustomerGroupRepository;
 use Illuminate\Http\Request;
 
@@ -70,7 +72,7 @@ class CustomerGroupController extends BaseController
 
         $customerGroups = $this->customerGroupRepository->paginate($limit);
 
-        return $this->sendResponse($customerGroups, 'Customer Groups retrieved successfully.');
+        return $this->sendResponse((CustomerGroupResource::class)::collection($customerGroups), 'Customer Groups retrieved successfully.');
     }
 
     /**
@@ -120,7 +122,7 @@ class CustomerGroupController extends BaseController
             return $this->sendError('Customer Group not found.');
         }
 
-        return $this->sendResponse($customerGroup, 'Customer Group retrieved successfully.');
+        return $this->sendResponse(new CustomerGroupResource($customerGroup), 'Customer Group retrieved successfully.');
     }
 
     /**
@@ -164,17 +166,13 @@ class CustomerGroupController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(CustomerGroupRequest $request)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'status' => 'required|boolean',
-        ]);
+        $data = $request->all();
 
         $customerGroup = $this->customerGroupRepository->create($data);
 
-        return $this->sendResponse($customerGroup, 'Customer Group created successfully.');
+        return $this->sendResponse(new CustomerGroupResource($customerGroup), 'Customer Group created successfully.');
     }
 
     /**
@@ -225,17 +223,13 @@ class CustomerGroupController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(CustomerGroupRequest $request, $id)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'status' => 'required|boolean',
-        ]);
+        $data = $request->all();
 
         $customerGroup = $this->customerGroupRepository->update($data, $id);
 
-        return $this->sendResponse($customerGroup, 'Customer Group updated successfully.');
+        return $this->sendResponse(new CustomerGroupResource($customerGroup), 'Customer Group updated successfully.');
     }
 
     /**
@@ -281,6 +275,6 @@ class CustomerGroupController extends BaseController
     {
         $customerGroup = $this->customerGroupRepository->delete($id);
 
-        return $this->sendResponse($customerGroup, 'Customer Group deleted successfully.');
+        return $this->sendResponse(new CustomerGroupResource($customerGroup), 'Customer Group deleted successfully.');
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\TableRequest;
+use App\Http\Resources\TableResource;
 use App\Repositories\TableRepository;
 use Illuminate\Http\Request;
 
@@ -70,10 +72,10 @@ class TableController extends BaseController
 
         $tables = $this->tableRepository->paginate($limit);
 
-        return $this->sendResponse($tables, 'Tables retrieved successfully.');
+        return $this->sendResponse((TableResource::class)::collection($tables), 'Tables retrieved successfully.');
     }
 
-   /**
+    /**
      * Display the specified resource.
      *
      * @OA\Get(
@@ -120,10 +122,10 @@ class TableController extends BaseController
             return $this->sendError('Table not found.');
         }
 
-        return $this->sendResponse($table, 'Table retrieved successfully.');
+        return $this->sendResponse(new TableResource($table), 'Table retrieved successfully.');
     }
 
-  /**
+    /**
      * Store a newly created resource in storage.
      *
      * @OA\Post(
@@ -164,20 +166,16 @@ class TableController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(TableRequest $request)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'status' => 'required|string',
-            'restaurant_id' => 'required|integer',
-        ]);
+        $data = $request->all();
 
         $table = $this->tableRepository->create($data);
 
-        return $this->sendResponse($table, 'Table created successfully.');
+        return $this->sendResponse(new TableResource($table), 'Table created successfully.');
     }
 
-/**
+    /**
      * Update the specified resource in storage.
      *
      * @OA\Put(
@@ -225,20 +223,16 @@ class TableController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(TableRequest $request, $id)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'status' => 'required|string',
-            'restaurant_id' => 'required|integer',
-        ]);
+        $data = $request->all();
 
         $table = $this->tableRepository->update($data, $id);
 
-        return $this->sendResponse($table, 'Table updated successfully.');
+        return $this->sendResponse(new TableResource($table), 'Table updated successfully.');
     }
 
-/**
+    /**
      * Remove the specified resource from storage.
      *
      * @OA\Delete(
@@ -281,6 +275,6 @@ class TableController extends BaseController
     {
         $table = $this->tableRepository->delete($id);
 
-        return $this->sendResponse($table, 'Table deleted successfully.');
+        return $this->sendResponse(new TableResource($table), 'Table deleted successfully.');
     }
 }

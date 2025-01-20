@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Eloquent\Repository;
+use App\Models\ProductUpSell;
 
 class ProductUpSellRepository extends Repository
 {
@@ -11,6 +12,6 @@ class ProductUpSellRepository extends Repository
      */
     public function model(): string
     {
-        return 'App\Contracts\ProductUpSell';
+        return ProductUpSell::class;
     }
 }

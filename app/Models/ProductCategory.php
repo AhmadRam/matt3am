@@ -18,11 +18,11 @@ class ProductCategory extends Model implements ContractsProductCategory
 
     public function product() : BelongsTo
     {
-        return $this->belongsTo(ProductProxy::modelClass());
+        return $this->belongsTo(Product::class);
     }
 
     public function category() : BelongsTo
     {
-        return $this->belongsTo(CategoryProxy::modelClass());
+        return $this->belongsTo(Category::class);
     }
 }

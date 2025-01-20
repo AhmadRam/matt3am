@@ -75,7 +75,7 @@ class User extends Authenticatable implements JWTSubject, ContractsUser
 
     public function restaurant(): BelongsTo
     {
-        return $this->belongsTo(RestaurantProxy::modelClass());
+        return $this->belongsTo(Restaurant::class);
     }
 
 

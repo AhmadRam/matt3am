@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\CategoryRequest;
+use App\Http\Resources\CategoryResource;
 use App\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 use OpenApi\Annotations as OA;
@@ -60,8 +62,10 @@ class CategoryController extends BaseController
     public function index(Request $request)
     {
         $limit = $request->input('limit', 12);
+
         $categories = $this->categoryRepository->paginate($limit);
-        return $this->sendResponse($categories, 'Categories retrieved successfully.', true);
+
+        return $this->sendResponse((CategoryResource::class)::collection($categories), 'Categories retrieved successfully.', true);
     }
 
     /**
@@ -122,7 +126,7 @@ class CategoryController extends BaseController
             return $this->sendError('Category not found.');
         }
 
-        return $this->sendResponse($category, 'Category retrieved successfully.');
+        return $this->sendResponse(new CategoryResource($category), 'Category retrieved successfully.');
     }
 
     /**
@@ -173,16 +177,13 @@ class CategoryController extends BaseController
      *     )
      * )
      */
-    public function create(Request $request)
+    public function create(CategoryRequest $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-        ]);
+        $data = $request->all();
 
         $category = $this->categoryRepository->create($data);
 
-        return $this->sendResponse($category, 'Category created successfully.', false, [], 201);
+        return $this->sendResponse(new CategoryResource($category), 'Category created successfully.', false, [], 201);
     }
 
     /**
@@ -253,16 +254,13 @@ class CategoryController extends BaseController
      *     )
      * )
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        $data = $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-        ]);
+        $data = $request->all();
 
         $category = $this->categoryRepository->update($data, $id);
 
-        return $this->sendResponse($category, 'Category updated successfully.');
+        return $this->sendResponse(new CategoryResource($category), 'Category updated successfully.');
     }
 
     /**

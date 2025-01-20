@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Eloquent\Repository;
+use App\Models\CustomerGroup;
 
 class CustomerGroupRepository extends Repository
 {
@@ -11,6 +12,6 @@ class CustomerGroupRepository extends Repository
      */
     public function model(): string
     {
-        return 'App\Contracts\CustomerGroup';
+        return CustomerGroup::class;
     }
 }

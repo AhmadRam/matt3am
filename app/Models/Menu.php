@@ -37,11 +37,11 @@ class Menu extends Model implements ContractsMenu
 
     public function restaurant(): BelongsTo
     {
-        return $this->belongsTo(RestaurantProxy::modelClass());
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function currency(): BelongsTo
     {
-        return $this->belongsTo(CurrencyProxy::modelClass());
+        return $this->belongsTo(Currency::class);
     }
 }

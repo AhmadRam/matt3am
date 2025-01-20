@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\RestaurantRequest;
+use App\Http\Resources\RestaurantResource;
 use App\Repositories\RestaurantRepository;
 use Illuminate\Http\Request;
 
@@ -70,7 +72,7 @@ class RestaurantController extends BaseController
 
         $restaurants = $this->restaurantRepository->paginate($limit);
 
-        return $this->sendResponse($restaurants, 'Restaurants retrieved successfully.');
+        return $this->sendResponse((RestaurantResource::class)::collection($restaurants), 'Restaurants retrieved successfully.');
     }
 
     /**
@@ -120,7 +122,7 @@ class RestaurantController extends BaseController
             return $this->sendError('Restaurant not found.');
         }
 
-        return $this->sendResponse($restaurant, 'Restaurant retrieved successfully.');
+        return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant retrieved successfully.');
     }
     /**
      * Store a newly created resource in storage.
@@ -163,21 +165,13 @@ class RestaurantController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(RestaurantRequest $request)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'address' => 'required|string',
-            'phone' => 'required|string',
-            'email' => 'required|email',
-            'image' => 'required|image',
-            'status' => 'required|boolean',
-        ]);
+        $data = $request->all();
 
         $restaurant = $this->restaurantRepository->create($data);
 
-        return $this->sendResponse($restaurant, 'Restaurant created successfully.', 201);
+        return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant created successfully.', 201);
     }
 
     /**
@@ -228,21 +222,13 @@ class RestaurantController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(RestaurantRequest $request, $id)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'address' => 'required|string',
-            'phone' => 'required|string',
-            'email' => 'required|email',
-            'image' => 'required|image',
-            'status' => 'required|boolean',
-        ]);
+        $data = $request->all();
 
         $restaurant = $this->restaurantRepository->update($data, $id);
 
-        return $this->sendResponse($restaurant, 'Restaurant updated successfully.');
+        return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant updated successfully.');
     }
 
     /**

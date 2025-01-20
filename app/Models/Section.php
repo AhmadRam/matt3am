@@ -37,6 +37,6 @@ class Section extends Model implements ContractsSection
 
     public function restaurant(): BelongsTo
     {
-        return $this->belongsTo(RestaurantProxy::modelClass());
+        return $this->belongsTo(Restaurant::class);
     }
 }

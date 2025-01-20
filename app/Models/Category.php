@@ -47,16 +47,16 @@ class Category extends Model
 
     public function products(): BelongsToMany
     {
-        return $this->belongsToMany(ProductProxy::modelClass(), 'product_categories');
+        return $this->belongsToMany(Product::class, 'product_categories');
     }
 
     public function restaurant(): BelongsTo
     {
-        return $this->belongsTo(RestaurantProxy::modelClass());
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function currency(): BelongsTo
     {
-        return $this->belongsTo(CurrencyProxy::modelClass());
+        return $this->belongsTo(Currency::class);
     }
 }

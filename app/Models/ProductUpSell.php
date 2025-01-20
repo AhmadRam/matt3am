@@ -19,11 +19,11 @@ class ProductUpSell extends Model implements ContractsProductUpSell
 
     public function parent() : BelongsTo
     {
-        return $this->belongsTo(ProductProxy::modelClass(), 'parent_id');
+        return $this->belongsTo(Product::class, 'parent_id');
     }
 
     public function child() : BelongsTo
     {
-        return $this->belongsTo(ProductProxy::modelClass(), 'child_id');
+        return $this->belongsTo(Product::class, 'child_id');
     }
 }

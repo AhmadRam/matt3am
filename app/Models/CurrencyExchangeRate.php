@@ -36,7 +36,7 @@ class CurrencyExchangeRate extends Model implements ContractsCurrencyExchangeRat
      */
     public function baseCurrency() : BelongsTo
     {
-        return $this->belongsTo(CurrencyProxy::modelClass(), 'base_currency');
+        return $this->belongsTo(Currency::class, 'base_currency');
     }
 
     /**
@@ -46,6 +46,6 @@ class CurrencyExchangeRate extends Model implements ContractsCurrencyExchangeRat
      */
     public function targetCurrency() : BelongsTo
     {
-        return $this->belongsTo(CurrencyProxy::modelClass(), 'target_currency');
+        return $this->belongsTo(Currency::class, 'target_currency');
     }
 }

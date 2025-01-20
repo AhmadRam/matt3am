@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
@@ -73,7 +74,7 @@ class AuthController extends BaseController
             $user->token = $jwtToken;
             JWTAuth::setToken($jwtToken)->authenticate();
 
-            return $this->sendResponse($jwtToken, __('app.login.successully_logged'));
+            return $this->sendResponse(new UserResource($user), __('app.login.successully_logged'));
         } else {
             return $this->sendError(__('app.login.invalid'), ['error' => 'Unauthorized'], 401);
         }

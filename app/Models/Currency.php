@@ -39,6 +39,6 @@ class Currency extends Model implements ContractsCurrency
      */
     public function exchangeRates() : HasMany
     {
-        return $this->hasMany(CurrencyExchangeRateProxy::modelClass(), 'base_currency');
+        return $this->hasMany(CurrencyExchangeRate::class, 'base_currency');
     }
 }

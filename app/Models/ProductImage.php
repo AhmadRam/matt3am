@@ -18,8 +18,10 @@ class ProductImage extends Model implements ContractsProductImage
         'product_id'
     ];
 
+    public $timestamps = false;
+
     public function product() : BelongsTo
     {
-        return $this->belongsTo(ProductProxy::modelClass());
+        return $this->belongsTo(Product::class);
     }
 }

@@ -41,6 +41,6 @@ class Table extends Model implements ContractsTable
 
     public function section(): BelongsTo
     {
-        return $this->belongsTo(SectionProxy::modelClass());
+        return $this->belongsTo(Section::class);
     }
 }

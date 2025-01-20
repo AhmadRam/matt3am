@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\CustomerRequest;
+use App\Http\Resources\CustomerResource;
 use App\Repositories\CustomerRepository;
 use Illuminate\Http\Request;
 
@@ -70,7 +72,7 @@ class CustomerController extends BaseController
 
         $customers = $this->customerRepository->paginate($limit);
 
-        return $this->sendResponse($customers, 'Customers retrieved successfully.', true);
+        return $this->sendResponse((CustomerResource::class)::collection($customers), 'Customers retrieved successfully.', true);
     }
 
     /**
@@ -120,7 +122,7 @@ class CustomerController extends BaseController
             return $this->sendError('Customer not found.');
         }
 
-        return $this->sendResponse($customer, 'Customer retrieved successfully.');
+        return $this->sendResponse(new CustomerResource($customer), 'Customer retrieved successfully.');
     }
 
     /**
@@ -164,22 +166,13 @@ class CustomerController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(CustomerRequest $request)
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'country' => 'required',
-            'postal_code' => 'required',
-        ]);
+        $data = $request->all();
 
         $customer = $this->customerRepository->create($data);
 
-        return $this->sendResponse($customer, 'Customer created successfully.');
+        return $this->sendResponse(new CustomerResource($customer), 'Customer created successfully.');
     }
 
     /**
@@ -230,22 +223,13 @@ class CustomerController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(CustomerRequest $request, $id)
     {
-        $data = request()->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'state' => 'required',
-            'country' => 'required',
-            'postal_code' => 'required',
-        ]);
+        $data = $request->all();
 
         $customer = $this->customerRepository->update($data, $id);
 
-        return $this->sendResponse($customer, 'Customer updated successfully.');
+        return $this->sendResponse(new CustomerResource($customer), 'Customer updated successfully.');
     }
 
     /**
@@ -291,6 +275,6 @@ class CustomerController extends BaseController
     {
         $customer = $this->customerRepository->delete($id);
 
-        return $this->sendResponse($customer, 'Customer deleted successfully.');
+        return $this->sendResponse(new CustomerResource($customer), 'Customer deleted successfully.');
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\BaseController;
+use App\Http\Requests\SectionRequest;
+use App\Http\Resources\SectionResource;
 use App\Repositories\SectionRepository;
 use Illuminate\Http\Request;
 
@@ -70,7 +72,7 @@ class SectionController extends BaseController
 
         $sections = $this->sectionRepository->paginate($limit);
 
-        return $this->sendResponse($sections, 'Sections retrieved successfully.');
+        return $this->sendResponse((SectionResource::class)::collection($sections), 'Sections retrieved successfully.');
     }
 
     /**
@@ -120,7 +122,7 @@ class SectionController extends BaseController
             return $this->sendError('Section not found.');
         }
 
-        return $this->sendResponse($section, 'Section retrieved successfully.');
+        return $this->sendResponse(new SectionResource($section), 'Section retrieved successfully.');
     }
 
     /**
@@ -164,17 +166,13 @@ class SectionController extends BaseController
      *     )
      * )
      */
-    public function create()
+    public function create(SectionRequest $request)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'status' => 'required|boolean',
-        ]);
+        $data = $request->all();
 
         $section = $this->sectionRepository->create($data);
 
-        return $this->sendResponse($section, 'Section created successfully.', 201);
+        return $this->sendResponse(new SectionResource($section), 'Section created successfully.', 201);
     }
 
     /**
@@ -225,17 +223,13 @@ class SectionController extends BaseController
      *     )
      * )
      */
-    public function update($id)
+    public function update(SectionRequest $request, $id)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'status' => 'required|boolean',
-        ]);
+        $data = $request->all();
 
         $section = $this->sectionRepository->update($data, $id);
 
-        return $this->sendResponse($section, 'Section updated successfully.');
+        return $this->sendResponse(new SectionResource($section), 'Section updated successfully.');
     }
 
     /**
@@ -281,6 +275,6 @@ class SectionController extends BaseController
     {
         $section = $this->sectionRepository->delete($id);
 
-        return $this->sendResponse($section, 'Section deleted successfully.');
+        return $this->sendResponse(new SectionResource($section), 'Section deleted successfully.');
     }
 }
