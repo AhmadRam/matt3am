@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class ProductResource extends JsonResource
 {
@@ -14,6 +15,9 @@ class ProductResource extends JsonResource
      */
     public function toArray($request)
     {
+        $paths = $this->images->pluck('path')->map(function ($path) {
+            return Storage::url($path);
+        })->toArray();
         return [
             'id'                   => $this->id,
             'sku'                  => $this->sku,
@@ -30,7 +34,7 @@ class ProductResource extends JsonResource
             'price'                => $this->price,
             'special_price'        => $this->special_price,
             'quantity'             => $this->quantity,
-            'images'               => $this->images->pluck('path')->toArray(),
+            'images'               => $paths,
             'created_at'           => \Carbon\Carbon::parse($this->created_at)->format('Y-m-d H:i:s'),
             'updated_at'           => \Carbon\Carbon::parse($this->updated_at)->format('Y-m-d H:i:s'),
         ];

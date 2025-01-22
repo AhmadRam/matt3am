@@ -52,6 +52,8 @@ Route::middleware('auth:users')->group(function () {
 
         Route::get('/show/{id}', [UserController::class, 'show']);
 
+        Route::get('/current-user', [UserController::class, 'currentUser']);
+
         Route::post('/create', [UserController::class, 'create']);
 
         Route::post('/update/{id}', [UserController::class, 'update']);

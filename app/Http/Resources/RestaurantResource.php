@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantResource extends JsonResource
 {
@@ -21,7 +22,7 @@ class RestaurantResource extends JsonResource
             'address'              => $this->address,
             'phone_code'           => $this->phone_code,
             'phone'                => $this->phone,
-            'logo'                 => $this->logo,
+            'logo'                 => Storage::url($this->logo),
             'status'               => $this->status,
             'user_id'              => $this->user_id,
             'currency_id'          => $this->currency_id,

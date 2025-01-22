@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class CustomerResource extends JsonResource
 {
@@ -23,7 +24,7 @@ class CustomerResource extends JsonResource
             'email'             => $this->email,
             'phone_code'        => $this->phone_code,
             'phone'             => $this->phone,
-            'image'             => $this->image,
+            'image'             => Storage::url($this->image),
             'is_verified'       => $this->is_verified,
             'notes'             => $this->notes,
             'api_token'         => $this->api_token,

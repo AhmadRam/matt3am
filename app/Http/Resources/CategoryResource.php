@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryResource extends JsonResource
 {
@@ -19,7 +20,7 @@ class CategoryResource extends JsonResource
             'name'              => $this->name,
             'position'          => $this->position,
             'status'            => $this->status,
-            'image'             => $this->image,
+            'image'             => Storage::url($this->image),
             'slug'              => $this->slug,
             'url_key'           => $this->url_key,
             'description'       => $this->description,

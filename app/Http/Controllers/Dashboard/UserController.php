@@ -126,6 +126,56 @@ class UserController extends BaseController
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @OA\Get(
+     *     path="/dashboard/users/current-user",
+     *     operationId="getCurrentUser",
+     *     tags={"Users"},
+     *     summary="Get current user",
+     *     description="Returns the details of a specific user.",
+     *     security={{"bearerAuth": {}}},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="User ID",
+     *         required=true,
+     *         @OA\Schema(type="integer", example=1)
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="User details",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="message", type="string", example="User retrieved successfully."),
+     *             @OA\Property(property="data", ref="#/components/schemas/User")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal server error.",
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="success", type="boolean", example=false),
+     *             @OA\Property(property="message", type="string", example="Internal server error"),
+     *             @OA\Property(property="result", type="object", example={})
+     *         )
+     *     )
+     * )
+     */
+    public function currentUser()
+    {
+        $user = auth('users')->user();
+
+        if (!$user) {
+            return $this->sendError('User not found.');
+        }
+
+        return $this->sendResponse(new UserResource($user), 'User retrieved successfully.');
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @OA\Post(
