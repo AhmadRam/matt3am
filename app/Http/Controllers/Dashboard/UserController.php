@@ -217,6 +217,12 @@ class UserController extends BaseController
     {
         $data = $request->all();
 
+        if ($data['password'] != '' && $data['password'] != null) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
         $user = $this->userRepository->update($data, $id);
 
         return $this->sendResponse(new UserResource($user), 'User updated successfully.');
