@@ -261,7 +261,7 @@ class UserController extends BaseController
      *     )
      * )
      */
-    public function delete($id)
+    public function destroy($id)
     {
         $user = $this->userRepository->delete($id);
 

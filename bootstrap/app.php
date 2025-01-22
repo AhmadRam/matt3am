@@ -48,6 +48,10 @@ return Application::configure(basePath: dirname(__DIR__))
             // 'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ]);
+
+        $middleware->validateCsrfTokens(except: [
+            '*'
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

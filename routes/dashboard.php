@@ -28,7 +28,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [CategoryController::class, 'create']);
 
-        Route::put('/update/{id}', [CategoryController::class, 'update']);
+        Route::post('/update/{id}', [CategoryController::class, 'update']);
 
         Route::delete('/destroy/{id}', [CategoryController::class, 'destroy']);
     });
@@ -41,7 +41,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [CurrencyController::class, 'create']);
 
-        Route::put('/update/{id}', [CurrencyController::class, 'update']);
+        Route::post('/update/{id}', [CurrencyController::class, 'update']);
 
         Route::delete('/destroy/{id}', [CurrencyController::class, 'destroy']);
     });
@@ -54,7 +54,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [UserController::class, 'create']);
 
-        Route::put('/update/{id}', [UserController::class, 'update']);
+        Route::post('/update/{id}', [UserController::class, 'update']);
 
         Route::delete('/destroy/{id}', [UserController::class, 'destroy']);
     });
@@ -67,7 +67,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [CurrencyExchangeRateController::class, 'create']);
 
-        Route::put('/update/{id}', [CurrencyExchangeRateController::class, 'update']);
+        Route::post('/update/{id}', [CurrencyExchangeRateController::class, 'update']);
 
         Route::delete('/destroy/{id}', [CurrencyExchangeRateController::class, 'destroy']);
     });
@@ -80,7 +80,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [CustomerController::class, 'create']);
 
-        Route::put('/update/{id}', [CustomerController::class, 'update']);
+        Route::post('/update/{id}', [CustomerController::class, 'update']);
 
         Route::delete('/destroy/{id}', [CustomerController::class, 'destroy']);
     });
@@ -93,7 +93,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [CustomerGroupController::class, 'create']);
 
-        Route::put('/update/{id}', [CustomerGroupController::class, 'update']);
+        Route::post('/update/{id}', [CustomerGroupController::class, 'update']);
 
         Route::delete('/destroy/{id}', [CustomerGroupController::class, 'destroy']);
     });
@@ -106,7 +106,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [MenuController::class, 'create']);
 
-        Route::put('/update/{id}', [MenuController::class, 'update']);
+        Route::post('/update/{id}', [MenuController::class, 'update']);
 
         Route::delete('/destroy/{id}', [MenuController::class, 'destroy']);
     });
@@ -119,7 +119,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [ProductController::class, 'create']);
 
-        Route::put('/update/{id}', [ProductController::class, 'update']);
+        Route::post('/update/{id}', [ProductController::class, 'update']);
 
         Route::delete('/destroy/{id}', [ProductController::class, 'destroy']);
     });
@@ -132,7 +132,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [RestaurantController::class, 'create']);
 
-        Route::put('/update/{id}', [RestaurantController::class, 'update']);
+        Route::post('/update/{id}', [RestaurantController::class, 'update']);
 
         Route::delete('/destroy/{id}', [RestaurantController::class, 'destroy']);
     });
@@ -145,7 +145,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [SectionController::class, 'create']);
 
-        Route::put('/update/{id}', [SectionController::class, 'update']);
+        Route::post('/update/{id}', [SectionController::class, 'update']);
 
         Route::delete('/destroy/{id}', [SectionController::class, 'destroy']);
     });
@@ -158,7 +158,7 @@ Route::middleware('auth:users')->group(function () {
 
         Route::post('/create', [TableController::class, 'create']);
 
-        Route::put('/update/{id}', [TableController::class, 'update']);
+        Route::post('/update/{id}', [TableController::class, 'update']);
 
         Route::delete('/destroy/{id}', [TableController::class, 'destroy']);
     });
