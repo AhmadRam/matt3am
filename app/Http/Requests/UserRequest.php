@@ -21,7 +21,7 @@ class UserRequest extends FormRequest
             'full_name'      => 'required|string|max:255',
             'email'          => 'required|email|unique:users,email,' . $userId . '|max:255', // Exclude current user's email during update
             'status'         => 'boolean',
-            'profile_image'  => 'nullable|image|max:2048',
+            'profile_image'  => 'nullable|max:2048',
             'restaurant_id'  => 'nullable|exists:restaurants,id',
         ];
     }

@@ -23,7 +23,7 @@ class CustomerRequest extends FormRequest
             'email'             => 'nullable|email|unique:customers,email,' . $customerId . '|max:255',  // Exclude current customer's email during update
             'phone_code'        => 'nullable|string|max:10',
             'phone'             => 'nullable|string|max:20',
-            'image'             => 'nullable|image|max:2048',
+            'image'             => 'nullable|max:2048',
             'password'          => 'nullable|string|min:8',
             'is_verified'       => 'boolean',
             'notes'             => 'nullable|string',

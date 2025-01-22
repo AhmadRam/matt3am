@@ -19,7 +19,7 @@ class RestaurantRequest extends FormRequest
             'address'                  => 'nullable|string',
             'phone_code'               => 'nullable|string|max:10',
             'phone'                    => 'nullable|string|max:20',
-            'logo'                     => 'nullable|image|max:2048',
+            'logo'                     => 'nullable|max:2048',
             'status'                   => 'boolean',
             'subscription_start_date'  => 'required|date',
             'subscription_end_date'    => 'required|date|after:subscription_start_date',
