@@ -126,38 +126,46 @@ class SectionController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @OA\Post(
      *     path="/dashboard/sections/create",
      *     operationId="createSection",
      *     tags={"Sections"},
-     *     summary="Create a new customer",
-     *     description="Creates a new customer.",
+     *     summary="Create a new section",
+     *     description="Creates a new section with translations",
      *     security={{"bearerAuth": {}}},
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Section")
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 allOf={
+     *                     @OA\Schema(ref="#/components/schemas/Section"),
+     *                     @OA\Schema(
+     *                         required={"restaurant_id"},
+     *                         @OA\Property(
+     *                             property="restaurant_id",
+     *                             type="integer",
+     *                             example=1
+     *                         ),
+     *                         @OA\Property(
+     *                             property="translations[en][name]",
+     *                             type="string",
+     *                             example="Main Section"
+     *                         ),
+     *                         @OA\Property(
+     *                             property="translations[ar][name]",
+     *                             type="string",
+     *                             example="القسم الرئيسي"
+     *                         )
+     *                     )
+     *                 }
+     *             )
+     *         )
      *     ),
      *     @OA\Response(
      *         response=201,
      *         description="Section created successfully",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=true),
-     *             @OA\Property(property="message", type="string", example="Currency Exchange created successfully."),
-     *             @OA\Property(property="result", ref="#/components/schemas/Section")
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal server error.",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=false),
-     *             @OA\Property(property="message", type="string", example="Internal server error"),
-     *             @OA\Property(property="result", type="object", example={})
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Section")
      *     )
      * )
      */
@@ -171,45 +179,51 @@ class SectionController extends BaseController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @OA\Put(
      *     path="/dashboard/sections/update/{id}",
      *     operationId="updateSection",
      *     tags={"Sections"},
-     *     summary="Update customer",
-     *     description="Updates the customer with given data.",
+     *     summary="Update section",
+     *     description="Updates section with translations",
      *     security={{"bearerAuth": {}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="Section ID",
      *         required=true,
-     *         @OA\Schema(type="integer", example=1)
+     *         @OA\Schema(type="integer")
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Section")
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 allOf={
+     *                     @OA\Schema(ref="#/components/schemas/Section"),
+     *                     @OA\Schema(
+     *                         @OA\Property(
+     *                             property="restaurant_id",
+     *                             type="integer",
+     *                             example=1
+     *                         ),
+     *                         @OA\Property(
+     *                             property="translations[en][name]",
+     *                             type="string",
+     *                             example="Updated Section"
+     *                         ),
+     *                         @OA\Property(
+     *                             property="translations[ar][name]",
+     *                             type="string",
+     *                             example="قسم محدث"
+     *                         )
+     *                     )
+     *                 }
+     *             )
+     *         )
      *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Section updated successfully",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=true),
-     *             @OA\Property(property="message", type="string", example="Section updated successfully."),
-     *             @OA\Property(property="result", ref="#/components/schemas/Section")
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal server error.",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=false),
-     *             @OA\Property(property="message", type="string", example="Internal server error"),
-     *             @OA\Property(property="result", type="object", example={})
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Section")
      *     )
      * )
      */

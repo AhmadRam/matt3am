@@ -6,30 +6,53 @@ use App\Contracts\Section as ContractsSection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
+use Astrotomic\Translatable\Translatable;
 
 /**
  * @OA\Schema(
  *     schema="Section",
- *     required={"name", "restaurant_id"},
+ *     required={"restaurant_id"},
  *     @OA\Property(property="id", type="integer", example=1),
- *     @OA\Property(property="name", type="string", example="Main Section"),
- *     @OA\Property(property="description", type="string", example="A description of the section."),
- *     @OA\Property(property="meta_title", type="string", example="Main Section Meta Title"),
- *     @OA\Property(property="meta_keywords", type="string", example="main, section"),
- *     @OA\Property(property="meta_description", type="string", example="Description for the main section"),
- *     @OA\Property(property="restaurant_id", type="integer", example=5),
- *     @OA\Property(property="created_at", type="string", format="date-time", example="2025-01-01T00:00:00Z"),
- *     @OA\Property(property="updated_at", type="string", format="date-time", example="2025-01-01T00:00:00Z")
+ *     @OA\Property(property="restaurant_id", type="integer", example=1),
+ *     @OA\Property(
+ *         property="translations",
+ *         type="object",
+ *         @OA\Property(
+ *             property="en",
+ *             type="object",
+ *             @OA\Property(property="name", type="string", example="Main Section"),
+ *             @OA\Property(property="description", type="string", nullable=true),
+ *             @OA\Property(property="meta_title", type="string", nullable=true),
+ *             @OA\Property(property="meta_keywords", type="string", nullable=true),
+ *             @OA\Property(property="meta_description", type="string", nullable=true)
+ *         ),
+ *         @OA\Property(
+ *             property="ar",
+ *             type="object",
+ *             @OA\Property(property="name", type="string", example="القسم الرئيسي"),
+ *             @OA\Property(property="description", type="string", nullable=true),
+ *             @OA\Property(property="meta_title", type="string", nullable=true),
+ *             @OA\Property(property="meta_keywords", type="string", nullable=true),
+ *             @OA\Property(property="meta_description", type="string", nullable=true)
+ *         )
+ *     ),
+ *     @OA\Property(property="created_at", type="string", format="date-time"),
+ *     @OA\Property(property="updated_at", type="string", format="date-time")
  * )
  */
-class Section extends Model implements ContractsSection
+class Section extends Model implements ContractsSection, TranslatableContract
 {
-    use HasFactory;
+    use HasFactory, Translatable;
 
     protected $fillable = [
+        'restaurant_id',
+    ];
+
+    // الحقول المترجمة
+    public $translatedAttributes = [
         'name',
         'description',
-        'restaurant_id',
         'meta_title',
         'meta_keywords',
         'meta_description'

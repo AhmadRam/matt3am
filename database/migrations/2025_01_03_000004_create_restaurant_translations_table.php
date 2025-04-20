@@ -11,17 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('restaurant_translations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->foreignId('restaurant_id')->constrained('restaurants')->cascadeOnDelete();
+            $table->text('address')->nullable();
+            $table->string('logo')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();
-            $table->string('meta_description')->nullable();
-            $table->timestamps();
+            $table->text('meta_description')->nullable();
+            $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete();
+            $table->string('locale')->index();
+            $table->unique(['restaurant_id', 'locale']);
         });
-
     }
 
     /**
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sections');
+        Schema::dropIfExists('restaurant_translations');
     }
 };

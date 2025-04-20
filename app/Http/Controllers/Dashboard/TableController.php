@@ -126,38 +126,40 @@ class TableController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @OA\Post(
      *     path="/dashboard/tables/create",
      *     operationId="createTable",
      *     tags={"Tables"},
      *     summary="Create a new table",
-     *     description="Creates a new table.",
+     *     description="Creates a new table with translations",
      *     security={{"bearerAuth": {}}},
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Table")
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 required={"section_id", "capacity"},
+     *                 @OA\Property(property="capacity", type="integer", example=4),
+     *                 @OA\Property(property="qr_code", type="string", example="qr123456"),
+     *                 @OA\Property(property="status", type="boolean", example=true),
+     *                 @OA\Property(property="section_id", type="integer", example=2),
+     *                 @OA\Property(
+     *                     property="translations[en][name]",
+     *                     type="string",
+     *                     example="Table 1"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="translations[ar][name]",
+     *                     type="string",
+     *                     example="طاولة 1"
+     *                 )
+     *             )
+     *         )
      *     ),
      *     @OA\Response(
      *         response=201,
      *         description="Table created successfully",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=true),
-     *             @OA\Property(property="message", type="string", example="Currency Exchange created successfully."),
-     *             @OA\Property(property="result", ref="#/components/schemas/Table")
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal server error.",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=false),
-     *             @OA\Property(property="message", type="string", example="Internal server error"),
-     *             @OA\Property(property="result", type="object", example={})
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Table")
      *     )
      * )
      */
@@ -171,45 +173,45 @@ class TableController extends BaseController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @OA\Put(
      *     path="/dashboard/tables/update/{id}",
      *     operationId="updateTable",
      *     tags={"Tables"},
      *     summary="Update table",
-     *     description="Updates the table with given data.",
+     *     description="Updates table with translations",
      *     security={{"bearerAuth": {}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="Table ID",
      *         required=true,
-     *         @OA\Schema(type="integer", example=1)
+     *         @OA\Schema(type="integer")
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Table")
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 @OA\Property(property="capacity", type="integer", example=4),
+     *                 @OA\Property(property="qr_code", type="string", example="qr123456"),
+     *                 @OA\Property(property="status", type="boolean", example=true),
+     *                 @OA\Property(property="section_id", type="integer", example=2),
+     *                 @OA\Property(
+     *                     property="translations[en][name]",
+     *                     type="string",
+     *                     example="Updated Table"
+     *                 ),
+     *                 @OA\Property(
+     *                     property="translations[ar][name]",
+     *                     type="string",
+     *                     example="طاولة محدثة"
+     *                 )
+     *             )
+     *         )
      *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Table updated successfully",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=true),
-     *             @OA\Property(property="message", type="string", example="Table updated successfully."),
-     *             @OA\Property(property="result", ref="#/components/schemas/Table")
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal server error.",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=false),
-     *             @OA\Property(property="message", type="string", example="Internal server error"),
-     *             @OA\Property(property="result", type="object", example={})
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Table")
      *     )
      * )
      */

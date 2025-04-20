@@ -17,26 +17,29 @@ class UserRepository extends Repository
         return User::class;
     }
 
-
     /**
-     * Create User.
+     * Create User with profile image upload.
      *
      * @param  array $data
      * @return \App\Models\User
      */
     public function create($data)
     {
-        $images['profile_image'] = $data['profile_image'] ?? null;
-        unset($data['profile_image']);
         $user = parent::create($data);
 
-        Helper::uploadImages($images, $user, 'profile_image');
+        if (!empty($data['profile_image'])) {
+            Helper::uploadImage(
+                ['profile_image' => $data['profile_image']],
+                $user,
+                'profile_image'
+            );
+        }
 
-        return $user;
+        return $user->fresh();
     }
 
     /**
-     * Update User.
+     * Update User with optional profile image update.
      *
      * @param  array  $data
      * @param  int  $id
@@ -45,15 +48,26 @@ class UserRepository extends Repository
     public function update(array $data, $id)
     {
         $user = $this->find($id);
-        $images['profile_image'] = $data['profile_image'] ?? null;
-        unset($data['profile_image']);
         $user = parent::update($data, $id);
 
-        Helper::uploadImages($images, $user, 'profile_image');
+        if (array_key_exists('profile_image', $data)) {
+            if ($data['profile_image'] === null) {
+                if ($user->profile_image) {
+                    Storage::delete($user->profile_image);
+                    $user->profile_image = null;
+                    $user->save();
+                }
+            } else {
+                Helper::uploadImage(
+                    ['profile_image' => $data['profile_image']],
+                    $user,
+                    'profile_image'
+                );
+            }
+        }
 
-        return $user;
+        return $user->fresh();
     }
-
 
     /**
      * Delete User.

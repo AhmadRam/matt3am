@@ -3414,15 +3414,32 @@
                 "tags": [
                     "Restaurants"
                 ],
-                "summary": "Create a new customer",
-                "description": "Creates a new customer.",
+                "summary": "Create a new restaurant",
+                "description": "Creates a new restaurant with translations",
                 "operationId": "createRestaurant",
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
-                                "$ref": "#/components/schemas/Restaurant"
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/Restaurant"
+                                    },
+                                    {
+                                        "properties": {
+                                            "translations[en][logo]": {
+                                                "type": "string",
+                                                "format": "binary"
+                                            },
+                                            "translations[ar][logo]": {
+                                                "type": "string",
+                                                "format": "binary"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
                             }
                         }
                     }
@@ -3433,44 +3450,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Currency Exchange created successfully."
-                                        },
-                                        "result": {
-                                            "$ref": "#/components/schemas/Restaurant"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": false
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Internal server error"
-                                        },
-                                        "result": {
-                                            "type": "object",
-                                            "example": []
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/Restaurant"
                                 }
                             }
                         }
@@ -3488,27 +3468,42 @@
                 "tags": [
                     "Restaurants"
                 ],
-                "summary": "Update customer",
-                "description": "Updates the customer with given data.",
+                "summary": "Update restaurant",
+                "description": "Updates restaurant with translations",
                 "operationId": "updateRestaurant",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Restaurant ID",
                         "required": true,
                         "schema": {
-                            "type": "integer",
-                            "example": 1
+                            "type": "integer"
                         }
                     }
                 ],
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
-                                "$ref": "#/components/schemas/Restaurant"
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/Restaurant"
+                                    },
+                                    {
+                                        "properties": {
+                                            "translations[en][logo]": {
+                                                "type": "string",
+                                                "format": "binary"
+                                            },
+                                            "translations[ar][logo]": {
+                                                "type": "string",
+                                                "format": "binary"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
                             }
                         }
                     }
@@ -3519,44 +3514,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Restaurant updated successfully."
-                                        },
-                                        "result": {
-                                            "$ref": "#/components/schemas/Restaurant"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": false
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Internal server error"
-                                        },
-                                        "result": {
-                                            "type": "object",
-                                            "example": []
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/Restaurant"
                                 }
                             }
                         }
@@ -3826,15 +3784,39 @@
                 "tags": [
                     "Sections"
                 ],
-                "summary": "Create a new customer",
-                "description": "Creates a new customer.",
+                "summary": "Create a new section",
+                "description": "Creates a new section with translations",
                 "operationId": "createSection",
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
-                                "$ref": "#/components/schemas/Section"
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/Section"
+                                    },
+                                    {
+                                        "required": [
+                                            "restaurant_id"
+                                        ],
+                                        "properties": {
+                                            "restaurant_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "translations[en][name]": {
+                                                "type": "string",
+                                                "example": "Main Section"
+                                            },
+                                            "translations[ar][name]": {
+                                                "type": "string",
+                                                "example": "القسم الرئيسي"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
                             }
                         }
                     }
@@ -3845,44 +3827,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Currency Exchange created successfully."
-                                        },
-                                        "result": {
-                                            "$ref": "#/components/schemas/Section"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": false
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Internal server error"
-                                        },
-                                        "result": {
-                                            "type": "object",
-                                            "example": []
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/Section"
                                 }
                             }
                         }
@@ -3900,27 +3845,46 @@
                 "tags": [
                     "Sections"
                 ],
-                "summary": "Update customer",
-                "description": "Updates the customer with given data.",
+                "summary": "Update section",
+                "description": "Updates section with translations",
                 "operationId": "updateSection",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Section ID",
                         "required": true,
                         "schema": {
-                            "type": "integer",
-                            "example": 1
+                            "type": "integer"
                         }
                     }
                 ],
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
-                                "$ref": "#/components/schemas/Section"
+                                "allOf": [
+                                    {
+                                        "$ref": "#/components/schemas/Section"
+                                    },
+                                    {
+                                        "properties": {
+                                            "restaurant_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "translations[en][name]": {
+                                                "type": "string",
+                                                "example": "Updated Section"
+                                            },
+                                            "translations[ar][name]": {
+                                                "type": "string",
+                                                "example": "قسم محدث"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
                             }
                         }
                     }
@@ -3931,44 +3895,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Section updated successfully."
-                                        },
-                                        "result": {
-                                            "$ref": "#/components/schemas/Section"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": false
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Internal server error"
-                                        },
-                                        "result": {
-                                            "type": "object",
-                                            "example": []
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/Section"
                                 }
                             }
                         }
@@ -4239,14 +4166,44 @@
                     "Tables"
                 ],
                 "summary": "Create a new table",
-                "description": "Creates a new table.",
+                "description": "Creates a new table with translations",
                 "operationId": "createTable",
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
-                                "$ref": "#/components/schemas/Table"
+                                "required": [
+                                    "section_id",
+                                    "capacity"
+                                ],
+                                "properties": {
+                                    "capacity": {
+                                        "type": "integer",
+                                        "example": 4
+                                    },
+                                    "qr_code": {
+                                        "type": "string",
+                                        "example": "qr123456"
+                                    },
+                                    "status": {
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "section_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "translations[en][name]": {
+                                        "type": "string",
+                                        "example": "Table 1"
+                                    },
+                                    "translations[ar][name]": {
+                                        "type": "string",
+                                        "example": "طاولة 1"
+                                    }
+                                },
+                                "type": "object"
                             }
                         }
                     }
@@ -4257,44 +4214,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Currency Exchange created successfully."
-                                        },
-                                        "result": {
-                                            "$ref": "#/components/schemas/Table"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": false
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Internal server error"
-                                        },
-                                        "result": {
-                                            "type": "object",
-                                            "example": []
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/Table"
                                 }
                             }
                         }
@@ -4313,26 +4233,50 @@
                     "Tables"
                 ],
                 "summary": "Update table",
-                "description": "Updates the table with given data.",
+                "description": "Updates table with translations",
                 "operationId": "updateTable",
                 "parameters": [
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Table ID",
                         "required": true,
                         "schema": {
-                            "type": "integer",
-                            "example": 1
+                            "type": "integer"
                         }
                     }
                 ],
                 "requestBody": {
                     "required": true,
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
-                                "$ref": "#/components/schemas/Table"
+                                "properties": {
+                                    "capacity": {
+                                        "type": "integer",
+                                        "example": 4
+                                    },
+                                    "qr_code": {
+                                        "type": "string",
+                                        "example": "qr123456"
+                                    },
+                                    "status": {
+                                        "type": "boolean",
+                                        "example": true
+                                    },
+                                    "section_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "translations[en][name]": {
+                                        "type": "string",
+                                        "example": "Updated Table"
+                                    },
+                                    "translations[ar][name]": {
+                                        "type": "string",
+                                        "example": "طاولة محدثة"
+                                    }
+                                },
+                                "type": "object"
                             }
                         }
                     }
@@ -4343,44 +4287,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": true
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Table updated successfully."
-                                        },
-                                        "result": {
-                                            "$ref": "#/components/schemas/Table"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": false
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Internal server error"
-                                        },
-                                        "result": {
-                                            "type": "object",
-                                            "example": []
-                                        }
-                                    },
-                                    "type": "object"
+                                    "$ref": "#/components/schemas/Table"
                                 }
                             }
                         }
@@ -4577,6 +4484,82 @@
                 "summary": "Get user by ID",
                 "description": "Returns the details of a specific user.",
                 "operationId": "getUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User retrieved successfully."
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/User"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Internal server error"
+                                        },
+                                        "result": {
+                                            "type": "object",
+                                            "example": []
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/dashboard/users/current-user": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get current user",
+                "description": "Returns the details of a specific user.",
+                "operationId": "getCurrentUser",
                 "parameters": [
                     {
                         "name": "id",
@@ -4912,8 +4895,10 @@
                         "example": true
                     },
                     "image": {
+                        "description": "Profile image of the user",
                         "type": "string",
-                        "example": "https://example.com/image.png"
+                        "format": "binary",
+                        "example": "image.jpg"
                     },
                     "slug": {
                         "type": "string",
@@ -5030,6 +5015,12 @@
                     "gender": {
                         "type": "string"
                     },
+                    "image": {
+                        "description": "Profile image of the user",
+                        "type": "string",
+                        "format": "binary",
+                        "example": "image.jpg"
+                    },
                     "date_of_birth": {
                         "type": "string",
                         "format": "date"
@@ -5086,7 +5077,6 @@
             },
             "Menu": {
                 "required": [
-                    "name",
                     "restaurant_id",
                     "currency_id"
                 ],
@@ -5094,10 +5084,6 @@
                     "id": {
                         "type": "integer",
                         "example": 1
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "Main Menu"
                     },
                     "restaurant_id": {
                         "type": "integer",
@@ -5107,27 +5093,60 @@
                         "type": "integer",
                         "example": 2
                     },
-                    "meta_title": {
-                        "type": "string",
-                        "example": "Main Menu Meta Title"
-                    },
-                    "meta_keywords": {
-                        "type": "string",
-                        "example": "menu, food, main"
-                    },
-                    "meta_description": {
-                        "type": "string",
-                        "example": "Main menu description for the restaurant."
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2025-01-01T00:00:00Z"
-                    },
-                    "updated_at": {
-                        "type": "string",
-                        "format": "date-time",
-                        "example": "2025-01-01T00:00:00Z"
+                    "translations": {
+                        "properties": {
+                            "en": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Main Menu"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_title": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_keywords": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "ar": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "القائمة الرئيسية"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_title": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_keywords": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
                     }
                 },
                 "type": "object"
@@ -5224,7 +5243,6 @@
             },
             "Restaurant": {
                 "required": [
-                    "name",
                     "subscription_start_date",
                     "subscription_end_date",
                     "user_id",
@@ -5235,20 +5253,6 @@
                         "type": "integer",
                         "example": 1
                     },
-                    "name": {
-                        "type": "string",
-                        "example": "Restaurant Name"
-                    },
-                    "description": {
-                        "type": "string",
-                        "example": "A brief description of the restaurant.",
-                        "nullable": true
-                    },
-                    "address": {
-                        "type": "string",
-                        "example": "123 Main St, City, Country",
-                        "nullable": true
-                    },
                     "phone_code": {
                         "type": "string",
                         "example": "+1",
@@ -5257,11 +5261,6 @@
                     "phone": {
                         "type": "string",
                         "example": "123456789",
-                        "nullable": true
-                    },
-                    "logo": {
-                        "type": "string",
-                        "example": "logo.png",
                         "nullable": true
                     },
                     "status": {
@@ -5279,46 +5278,105 @@
                         "example": "2026-01-01"
                     },
                     "user_id": {
-                        "description": "The ID of the user associated with the restaurant.",
                         "type": "integer",
                         "example": 1
                     },
                     "currency_id": {
-                        "description": "The ID of the currency associated with the restaurant.",
                         "type": "integer",
                         "example": 1
                     },
-                    "meta_title": {
+                    "translations": {
+                        "properties": {
+                            "en": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Restaurant Name"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "A brief description",
+                                        "nullable": true
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "123 Main St",
+                                        "nullable": true
+                                    },
+                                    "logo": {
+                                        "description": "Restaurant logo",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "meta_title": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_keywords": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "string",
+                                "format": "binary"
+                            },
+                            "ar": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "اسم المطعم"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "وصف مختصر",
+                                        "nullable": true
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "123 الشارع الرئيسي",
+                                        "nullable": true
+                                    },
+                                    "logo": {
+                                        "description": "شعار المطعم",
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "meta_title": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_keywords": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
                         "type": "string",
-                        "example": "Restaurant Meta Title",
-                        "nullable": true
-                    },
-                    "meta_keywords": {
-                        "type": "string",
-                        "example": "restaurant, food, dining",
-                        "nullable": true
-                    },
-                    "meta_description": {
-                        "type": "string",
-                        "example": "Meta description for the restaurant.",
-                        "nullable": true
+                        "format": "binary"
                     },
                     "created_at": {
                         "type": "string",
-                        "format": "date-time",
-                        "example": "2025-01-01T00:00:00Z"
+                        "format": "date-time"
                     },
                     "updated_at": {
                         "type": "string",
-                        "format": "date-time",
-                        "example": "2025-01-01T00:00:00Z"
+                        "format": "date-time"
                     }
                 },
                 "type": "object"
             },
             "Section": {
                 "required": [
-                    "name",
                     "restaurant_id"
                 ],
                 "properties": {
@@ -5326,56 +5384,85 @@
                         "type": "integer",
                         "example": 1
                     },
-                    "name": {
-                        "type": "string",
-                        "example": "Main Section"
-                    },
-                    "description": {
-                        "type": "string",
-                        "example": "A description of the section."
-                    },
-                    "meta_title": {
-                        "type": "string",
-                        "example": "Main Section Meta Title"
-                    },
-                    "meta_keywords": {
-                        "type": "string",
-                        "example": "main, section"
-                    },
-                    "meta_description": {
-                        "type": "string",
-                        "example": "Description for the main section"
-                    },
                     "restaurant_id": {
                         "type": "integer",
-                        "example": 5
+                        "example": 1
+                    },
+                    "translations": {
+                        "properties": {
+                            "en": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Main Section"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_title": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_keywords": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "ar": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "القسم الرئيسي"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_title": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_keywords": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
                     },
                     "created_at": {
                         "type": "string",
-                        "format": "date-time",
-                        "example": "2025-01-01T00:00:00Z"
+                        "format": "date-time"
                     },
                     "updated_at": {
                         "type": "string",
-                        "format": "date-time",
-                        "example": "2025-01-01T00:00:00Z"
+                        "format": "date-time"
                     }
                 },
                 "type": "object"
             },
             "Table": {
                 "required": [
-                    "name",
-                    "section_id"
+                    "section_id",
+                    "capacity"
                 ],
                 "properties": {
                     "id": {
                         "type": "integer",
                         "example": 1
-                    },
-                    "name": {
-                        "type": "string",
-                        "example": "Table 1"
                     },
                     "capacity": {
                         "type": "integer",
@@ -5383,37 +5470,78 @@
                     },
                     "qr_code": {
                         "type": "string",
-                        "example": "https://example.com/qr-code.png"
+                        "example": "qr123456"
                     },
                     "status": {
                         "type": "boolean",
                         "example": true
                     },
-                    "meta_title": {
-                        "type": "string",
-                        "example": "Table 1 Meta Title"
-                    },
-                    "meta_keywords": {
-                        "type": "string",
-                        "example": "table, dining"
-                    },
-                    "meta_description": {
-                        "type": "string",
-                        "example": "Table 1 description"
-                    },
                     "section_id": {
                         "type": "integer",
                         "example": 2
                     },
+                    "translations": {
+                        "properties": {
+                            "en": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Table 1"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_title": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_keywords": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "ar": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "طاولة 1"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_title": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_keywords": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "meta_description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    },
                     "created_at": {
                         "type": "string",
-                        "format": "date-time",
-                        "example": "2025-01-01T00:00:00Z"
+                        "format": "date-time"
                     },
                     "updated_at": {
                         "type": "string",
-                        "format": "date-time",
-                        "example": "2025-01-01T00:00:00Z"
+                        "format": "date-time"
                     }
                 },
                 "type": "object"
@@ -5456,8 +5584,10 @@
                         "example": true
                     },
                     "profile_image": {
+                        "description": "Profile image of the user",
                         "type": "string",
-                        "example": "https://example.com/profile.jpg"
+                        "format": "binary",
+                        "example": "profile_image.jpg"
                     },
                     "restaurant_id": {
                         "type": "integer",

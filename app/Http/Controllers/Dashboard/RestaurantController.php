@@ -124,39 +124,42 @@ class RestaurantController extends BaseController
 
         return $this->sendResponse(new RestaurantResource($restaurant), 'Restaurant retrieved successfully.');
     }
+
     /**
-     * Store a newly created resource in storage.
-     *
      * @OA\Post(
      *     path="/dashboard/restaurants/create",
      *     operationId="createRestaurant",
      *     tags={"Restaurants"},
-     *     summary="Create a new customer",
-     *     description="Creates a new customer.",
+     *     summary="Create a new restaurant",
+     *     description="Creates a new restaurant with translations",
      *     security={{"bearerAuth": {}}},
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Restaurant")
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 allOf={
+     *                     @OA\Schema(ref="#/components/schemas/Restaurant"),
+     *                     @OA\Schema(
+     *                         @OA\Property(
+     *                             property="translations[en][logo]",
+     *                             type="string",
+     *                             format="binary"
+     *                         ),
+     *                         @OA\Property(
+     *                             property="translations[ar][logo]",
+     *                             type="string",
+     *                             format="binary"
+     *                         )
+     *                     )
+     *                 }
+     *             )
+     *         )
      *     ),
      *     @OA\Response(
      *         response=201,
      *         description="Restaurant created successfully",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=true),
-     *             @OA\Property(property="message", type="string", example="Currency Exchange created successfully."),
-     *             @OA\Property(property="result", ref="#/components/schemas/Restaurant")
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal server error.",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=false),
-     *             @OA\Property(property="message", type="string", example="Internal server error"),
-     *             @OA\Property(property="result", type="object", example={})
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Restaurant")
      *     )
      * )
      */
@@ -170,45 +173,46 @@ class RestaurantController extends BaseController
     }
 
     /**
-     * Update the specified resource in storage.
-     *
      * @OA\Put(
      *     path="/dashboard/restaurants/update/{id}",
      *     operationId="updateRestaurant",
      *     tags={"Restaurants"},
-     *     summary="Update customer",
-     *     description="Updates the customer with given data.",
+     *     summary="Update restaurant",
+     *     description="Updates restaurant with translations",
      *     security={{"bearerAuth": {}}},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
-     *         description="Restaurant ID",
      *         required=true,
-     *         @OA\Schema(type="integer", example=1)
+     *         @OA\Schema(type="integer")
      *     ),
      *     @OA\RequestBody(
      *         required=true,
-     *         @OA\JsonContent(ref="#/components/schemas/Restaurant")
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 allOf={
+     *                     @OA\Schema(ref="#/components/schemas/Restaurant"),
+     *                     @OA\Schema(
+     *                         @OA\Property(
+     *                             property="translations[en][logo]",
+     *                             type="string",
+     *                             format="binary"
+     *                         ),
+     *                         @OA\Property(
+     *                             property="translations[ar][logo]",
+     *                             type="string",
+     *                             format="binary"
+     *                         )
+     *                     )
+     *                 }
+     *             )
+     *         )
      *     ),
      *     @OA\Response(
      *         response=200,
      *         description="Restaurant updated successfully",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=true),
-     *             @OA\Property(property="message", type="string", example="Restaurant updated successfully."),
-     *             @OA\Property(property="result", ref="#/components/schemas/Restaurant")
-     *         )
-     *     ),
-     *     @OA\Response(
-     *         response=500,
-     *         description="Internal server error.",
-     *         @OA\JsonContent(
-     *             type="object",
-     *             @OA\Property(property="success", type="boolean", example=false),
-     *             @OA\Property(property="message", type="string", example="Internal server error"),
-     *             @OA\Property(property="result", type="object", example={})
-     *         )
+     *         @OA\JsonContent(ref="#/components/schemas/Restaurant")
      *     )
      * )
      */

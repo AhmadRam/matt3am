@@ -10,6 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "astrotomic/laravel-translatable": "^11.16",
         "darkaonline/l5-swagger": "^8.6",
         "intervention/image": "^3.11",
         "intervention/image-laravel": "^1.4",

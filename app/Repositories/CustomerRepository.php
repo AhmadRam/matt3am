@@ -19,24 +19,7 @@ class CustomerRepository extends Repository
 
 
     /**
-     * Create Customer.
-     *
-     * @param  array $data
-     * @return \App\Models\Customer
-     */
-    public function create($data)
-    {
-        $images['image'] = $data['image'] ?? null;
-        unset($data['image']);
-        $customer = parent::create($data);
-
-        Helper::uploadImages($images, $customer, 'image');
-
-        return $customer;
-    }
-
-    /**
-     * Update Customer.
+     * Update Customer with optional image update.
      *
      * @param  array  $data
      * @param  int  $id
@@ -45,13 +28,25 @@ class CustomerRepository extends Repository
     public function update(array $data, $id)
     {
         $customer = $this->find($id);
-        $images['image'] = $data['image'] ?? null;
-        unset($data['image']);
+
         $customer = parent::update($data, $id);
 
-        Helper::uploadImages($images, $customer, 'image');
+        if (isset($data['image'])) {
+            Helper::uploadImage(
+                ['image' => $data['image']],
+                $customer,
+                'image'
+            );
+        } elseif (array_key_exists('image', $data) && $data['image'] === null) {
 
-        return $customer;
+            if ($customer->image) {
+                Storage::delete($customer->image);
+                $customer->image = null;
+                $customer->save();
+            }
+        }
+
+        return $customer->fresh();
     }
 
 

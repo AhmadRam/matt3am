@@ -27,7 +27,8 @@ class Currency extends Model implements ContractsCurrency
     protected $fillable = [
         'code',
         'name',
-        'symbol'
+        'symbol',
+        'status',
     ];
 
     /**
