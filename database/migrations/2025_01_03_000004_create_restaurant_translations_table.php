@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
             $table->foreignId('restaurant_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('locale_id')->constrained()->cascadeOnDelete();
             $table->string('locale')->index();
             $table->unique(['restaurant_id', 'locale']);
         });

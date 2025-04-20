@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('meta_description')->nullable();
             $table->string('locale')->index();
             $table->foreignId('menu_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('locale_id')->constrained()->cascadeOnDelete();
             $table->unique(['menu_id', 'locale']);
         });
     }

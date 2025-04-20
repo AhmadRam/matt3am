@@ -18,8 +18,11 @@ return new class extends Migration
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
+            $table->foreignId('section_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('locale_id')->constrained()->cascadeOnDelete();
+            $table->string('locale')->index();
+            $table->unique(['section_id', 'locale']);
         });
-
     }
 
     /**
